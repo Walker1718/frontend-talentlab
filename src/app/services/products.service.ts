@@ -6,18 +6,18 @@ import { Router } from '@angular/router';
 @Injectable({
   providedIn: 'root'
 })
-export class AlumnosService {
-
-  private urlEndPoint: string = 'http://localhost:8088/api/alumnos';
+export class ProductsService {
+  
+  private urlEndPoint: string = 'http://localhost:8088/api/products';
 
   private httpHeaders = new HttpHeaders({'Content-type': 'application/json'})
 
   constructor(private http: HttpClient, private router: Router) { }
 
-  getAlumnos(): Observable<any> {
+  getProducts(): Observable<any> {
     return this.http.get<any>(this.urlEndPoint).pipe(
       catchError(e => {
-        this.router.navigate([`/alumnos`]);
+        this.router.navigate([`/products`]);
         console.error(e.error.mensaje);
         return throwError(() => {
           const error: any = new Error(e.error.mensaje);
@@ -27,8 +27,4 @@ export class AlumnosService {
     );
   }
 
-  
-
-
 }
-

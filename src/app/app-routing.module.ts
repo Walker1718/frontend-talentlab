@@ -5,6 +5,7 @@ import { StarwarsComponent } from './components/starwars/starwars.component';
 import { AlumnosComponent } from './components/alumnos/alumnos.component';
 import { NosotrosComponent } from './components/nosotros/nosotros.component';
 import { Page404Component } from './components/page404/page404.component';
+import { ProductsComponent } from './components/products/products.component';
 
 const routes: Routes = [
   {
@@ -21,6 +22,9 @@ const routes: Routes = [
   },
   {
     path: 'alumnos', component: AlumnosComponent,
+  },
+  {
+    path: 'products', component: ProductsComponent,
   },
   {
     path: 'nosotros', component: NosotrosComponent,
