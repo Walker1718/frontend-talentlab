@@ -1,4 +1,4 @@
-export class Alumnos {
+export class Clients {
     id : number = 0;
     rut : string = '';
     nombre : string = '';

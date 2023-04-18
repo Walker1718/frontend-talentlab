@@ -13,7 +13,7 @@
         </div>
     </div>
 </div>
-<div *ngIf="alumnos.length > 0; else NoHayAlumnos" class="container my-4">
+<div *ngIf="clients.length > 0; else NoHayAlumnos" class="container my-4">
     <div class="table-responsive">
         <table class="table table-bordered table-hover">
             <thead class="table-dark">
@@ -29,14 +29,14 @@
                 </tr>
             </thead>
             <tbody>
-                <tr *ngFor="let alumno of alumnos">
-                    <td class="text-center">{{alumno.id}}</td>
-                    <td class="text-end">{{alumno.rut}}</td>
-                    <td>{{alumno.nombre}} {{alumno.apellido}}</td>
-                    <td>{{alumno.email}}</td>
-                    <td class="text-center">{{alumno.genero |uppercase | truncateLetter:1:'' }}</td>
-                    <td class="text-center">{{alumno.fechaNacimiento | date: 'dd-MMM-yyyy'}}</td>
-                    <td class="text-end">{{alumno.arancel | currency: 'CLP': 'symbol-narrow': '1.0-0'}}</td>
+                <tr *ngFor="let client of clients">
+                    <td class="text-center">{{client.id}}</td>
+                    <td class="text-end">{{client.rut}}</td>
+                    <td>{{client.nombre}} {{client.apellido}}</td>
+                    <td>{{client.email}}</td>
+                    <td class="text-center">{{client.genero |uppercase | truncateLetter:1:'' }}</td>
+                    <td class="text-center">{{client.fechaNacimiento | date: 'dd-MMM-yyyy'}}</td>
+                    <td class="text-end">{{client.arancel | currency: 'CLP': 'symbol-narrow': '1.0-0'}}</td>
                     <td>
                         <div class="row">
                             <div class="col-md-6 text-center">
