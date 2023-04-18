@@ -1,0 +1,73 @@
+<div class="container my-4 bg-dark text-white py-3 rounded">
+    <div class="row">
+        <div class="col-md-6">
+            <h1>{{ titulo }}</h1>
+            <p>{{ mensaje }}</p>
+        </div>
+        <div class="col-md-6 text-end align-middle">
+            <button class="btn btn-outline-primary" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Crear nuevo registro">
+                <span class="fs-1">
+                    <fa-icon [icon]="faAddPerson"></fa-icon>
+                </span>
+            </button>
+        </div>
+    </div>
+</div>
+<div *ngIf="alumnos.length > 0; else NoHayAlumnos" class="container my-4">
+    <div class="table-responsive">
+        <table class="table table-bordered table-hover">
+            <thead class="table-dark">
+                <tr class="text-center">
+                    <th>ID</th>
+                    <th>Rut</th>
+                    <th>Nombre</th>
+                    <th>Email</th>
+                    <th>Genero</th>
+                    <th>Fecha Nacimiento</th>
+                    <th>Arancel</th>
+                    <th>Acciones</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let alumno of alumnos">
+                    <td class="text-center">{{alumno.id}}</td>
+                    <td class="text-end">{{alumno.rut}}</td>
+                    <td>{{alumno.nombre}} {{alumno.apellido}}</td>
+                    <td>{{alumno.email}}</td>
+                    <td class="text-center">{{alumno.genero |uppercase | truncateLetter:1:'' }}</td>
+                    <td class="text-center">{{alumno.fechaNacimiento | date: 'dd-MMM-yyyy'}}</td>
+                    <td class="text-end">{{alumno.arancel | currency: 'CLP': 'symbol-narrow': '1.0-0'}}</td>
+                    <td>
+                        <div class="row">
+                            <div class="col-md-6 text-center">
+                                <button class="btn btn-outline-warning mb-1" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Editar">
+                                    <fa-icon [icon]="faEditPerson"></fa-icon>
+                                </button>
+                            </div>
+                            <div class="col-md-6 text-center">
+                                <button class="btn btn-outline-danger" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Eliminar">
+                                    <fa-icon [icon]="faDeletePerson"></fa-icon>
+                                </button>
+                            </div>
+                        </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<ng-template #NoHayAlumnos>
+    <div class="container my-4 py-3 rounded">
+        <div class="card">
+            <div class="card-header text-center">
+                <span class="text-warning fs-1">
+                    <fa-icon [icon]="faExclamation"></fa-icon>
+                </span>
+            </div>
+            <div class="card-body text-center">
+                <h5 class="card-title">{{ mensaje }}</h5>
+            </div>
+        </div>
+    </div>
+</ng-template>
