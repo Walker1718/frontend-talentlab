@@ -8,6 +8,7 @@ import { FooterComponent } from './components/footer/footer.component';
 import { NosotrosComponent } from './components/nosotros/nosotros.component';
 import { StarwarsComponent } from './components/starwars/starwars.component';
 import { ClientsComponent } from './components/clients/clients.component';
+import { ProductsComponent } from './components/products/products.component';
 import { HomeComponent } from './components/home/home.component';
 import { Page404Component } from './components/page404/page404.component';
 import { UnderConstructionComponent } from './components/under-construction/under-construction.component';
@@ -28,6 +29,7 @@ registerLocaleData(localeES,'es');
     NosotrosComponent,
     StarwarsComponent,
     ClientsComponent,
+    ProductsComponent,
     HomeComponent,
     Page404Component,
     UnderConstructionComponent,
