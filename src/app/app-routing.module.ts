@@ -2,7 +2,6 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { HomeComponent } from './components/home/home.component';
 import { StarwarsComponent } from './components/starwars/starwars.component';
-import { AlumnosComponent } from './components/productos/alumnos.component';
 import { NosotrosComponent } from './components/nosotros/nosotros.component';
 import { Page404Component } from './components/page404/page404.component';
 import { ProductsComponent } from './components/products/products.component';
@@ -20,9 +19,7 @@ const routes: Routes = [
   {
     path: 'starwars', component: StarwarsComponent,
   },
-  {
-    path: 'alumnos', component: AlumnosComponent,
-  },
+  
   {
     path: 'products', component: ProductsComponent,
   },

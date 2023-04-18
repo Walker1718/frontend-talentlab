@@ -28,7 +28,7 @@
             </thead>
             <tbody>
                 <tr *ngFor="let product of products">
-                    <td class="text-center">{{product.id}}</td>
+                    <td class="text-center">{{product.idProduct}}</td>
                     <td class="text-end">{{product.name}}</td>
                     <td class="text-end">{{product.category}}</td>
                     <td class="text-end">{{product.price | currency: 'CLP': 'symbol-narrow': '1.0-0'}}</td>
