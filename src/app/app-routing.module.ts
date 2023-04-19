@@ -6,6 +6,7 @@ import { ClientsComponent } from './components/clients/clients.component';
 import { NosotrosComponent } from './components/nosotros/nosotros.component';
 import { Page404Component } from './components/page404/page404.component';
 import { ProductsComponent } from './components/products/products.component';
+import { FormProductsComponent } from './components/products/form-products/form-products.component';
 
 const routes: Routes = [
   {
@@ -26,6 +27,12 @@ const routes: Routes = [
   },
   {
     path: 'products', component: ProductsComponent,
+  },
+  {
+    path: 'products/form-products', component: FormProductsComponent,
+  },
+  {
+    path: 'products/form-products/:id', component: FormProductsComponent,
   },
   {
     path: 'nosotros', component: NosotrosComponent,
