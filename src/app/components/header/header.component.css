@@ -1,4 +1,11 @@
 .img-nav {
-    width: 100px;
-    height: 100px;
+    width: 250px;
+    height: 250px;
+    padding-left: 50px;
+}
+.navbar{
+    height: 150px;
+}
+.nav-link{
+    color: #6c757d;
 }
