@@ -18,6 +18,8 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { registerLocaleData } from '@angular/common';
 import localeES from '@angular/common/locales/es-CL';
 import { TruncateLetterPipe } from './pipes/truncate-letter.pipe';
+import { FormProductsComponent } from './components/products/form-products/form-products.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 registerLocaleData(localeES,'es');
 
@@ -33,13 +35,16 @@ registerLocaleData(localeES,'es');
     HomeComponent,
     Page404Component,
     UnderConstructionComponent,
-    TruncateLetterPipe
+    TruncateLetterPipe,
+    FormProductsComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
     FontAwesomeModule,
+    FormsModule,
+    ReactiveFormsModule,
   ],
   providers: [
     { 

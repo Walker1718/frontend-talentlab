@@ -1,0 +1,65 @@
+<div class="container my-4">
+    <form [formGroup]="form">
+        <div class="card">
+            <div class="card-header">
+                <h3 class="card-title" *ngIf="!product.idProduct else BloqueTitulo">{{ titleCreate }}</h3>
+                <ng-template #BloqueTitulo>
+                    <h3 class="card-title">{{ titleUpdate }}</h3>
+                </ng-template>
+            </div>
+            <div class="card-body">
+                <div class="form-group row mb-3">
+                    <label for="name" class="col-form-label col-sm-2 fw-bold">Nombre</label>
+                    <div class="col-sm-10">
+                        <input type="text" class="form-control" name="name" id="name" formControlName="name" [(ngModel)]="product.name" [ngClass]="{'is-invalid' : submitted && f['name'].errors}">
+                        <div *ngIf="submitted && f['name'].errors" class="invalid-feedback">
+                            <div *ngIf="f['name'].errors['minlength']">El nombre debe contener al menos 2 caracteres.</div>
+                            <div *ngIf="f['name'].errors['maxlength']">El nombre ingresado excede el tamaño máximo permitido (50)</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group row mb-3">
+                    <label for="price" class="col-form-label col-sm-2 fw-bold">Precio</label>
+                    <div class="col-sm-10">
+                        <input type="number" class="form-control" name="price" id="price" formControlName="price" [(ngModel)]="product.price" [ngClass]="{'is-invalid' : submitted && f['price'].errors}">
+                        <div *ngIf="submitted && f['price'].errors" class="invalid-feedback">
+                            <div *ngIf="f['price'].errors['required']">Debes ingresar un valor válido</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group row mb-3">
+                    <label for="category" class="col-form-label col-sm-2 fw-bold">Categoria</label>
+                    <div class="col-sm-10">
+                        <input type="text" class="form-control" name="category" id="category" formControlName="category" [(ngModel)]="product.category" [ngClass]="{'is-invalid' : submitted && f['category'].errors}">
+                        <div *ngIf="submitted && f['category'].errors" class="invalid-feedback">
+                            <div *ngIf="f['category'].errors['required']">Debes ingresar una categoria.</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group row mb-3">
+                    <label for="stock" class="col-form-label col-sm-2 fw-bold">Stock</label>
+                    <div class="col-sm-10">
+                        <input type="number" class="form-control" name="stock" id="stock" formControlName="stock" [(ngModel)]="product.stock" [ngClass]="{'is-invalid' : submitted && f['stock'].errors}">
+                        <div *ngIf="submitted && f['stock'].errors" class="invalid-feedback">
+                            <div *ngIf="f['stock'].errors['required']">Debes ingresar un stock.</div>
+                        </div>
+                    </div>
+                </div>
+            
+                
+            </div>
+            <div class="card-footer">
+                <div class="form-group row text-center">
+                    <div class="col">
+                        <button *ngIf="!product.idProduct else UpdateBlock" type="button" (click)="onSubmit()" class="btn btn-lg btn-outline-primary m-2">Crear</button>
+                        <ng-template #UpdateBlock>
+                            <button type="button" (click)="updateProduct()" class="btn btn-lg btn-outline-primary m-2">Modificar</button>
+                        </ng-template>
+                        <button type="button" *ngIf="!product.idProduct" (click)="onReset()" class="btn btn-lg btn-outline-primary m-2"> Limpiar</button>
+                        <button type="button" [routerLink]="['/products']" class="btn btn-lg btn-outline-primary m-2"> Volver</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>

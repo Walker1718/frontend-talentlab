@@ -5,7 +5,7 @@
             <p>{{ mensaje }}</p>
         </div>
         <div class="col-md-6 text-end align-middle">
-            <button class="btn btn-outline-primary" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Crear nuevo producto">
+            <button class="btn btn-outline-primary" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Crear nuevo registro" [routerLink]="['/products/form-products']">
                 <span class="fs-1">
                     <fa-icon [icon]="faAddProduct"></fa-icon>
                 </span>
@@ -35,12 +35,14 @@
                     <td>
                         <div class="row">
                             <div class="col-md-6 text-center">
-                                <button class="btn btn-outline-warning mb-1" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Editar">
-                                    <fa-icon [icon]="faEditProduct"></fa-icon>
+                                <button [routerLink] ="['/products/form-products',product.idProduct]" class="btn btn-outline-warning mb-1" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Editar">
+                                    <span class ="fs-5">
+                                        <fa-icon [icon]="faEditProduct"></fa-icon>
+                                    </span>
                                 </button>
                             </div>
                             <div class="col-md-6 text-center">
-                                <button class="btn btn-outline-danger" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Eliminar">
+                                <button class="btn btn-outline-danger" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Eliminar" (click)="eliminarProduct(product)">
                                     <fa-icon [icon]="faDeleteProduct"></fa-icon>
                                 </button>
                             </div>
