@@ -19,6 +19,7 @@ export class ProductsComponent implements OnInit{
   faDeleteProduct = faTrashCan;
   faAddProduct = faRectangleAd;
 
+  optionSort: { property: string | null, order : string } = { property : null, order : 'asc' };
 
   constructor(private productService: ProductsService) {}
 
@@ -37,7 +38,13 @@ export class ProductsComponent implements OnInit{
     );
   }
 
-  
+  orderListProducts(property : string) : void {
+    const order = this.optionSort.order;
+    this.optionSort = {
+      property,
+      order : order === 'asc' ? 'desc' : 'asc'
+    }
+  }  
 
 
   eliminarProduct(product: Products) : void{
