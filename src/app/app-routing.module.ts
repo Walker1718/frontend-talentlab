@@ -49,6 +49,9 @@ const routes: Routes = [
     path: 'store', component: StoreComponent,
   },
   {
+    path: 'store/add', component: StoreComponent,
+  },
+  {
     path: '404', component: Page404Component,
   },
   {
