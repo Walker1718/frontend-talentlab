@@ -20,6 +20,9 @@ import localeES from '@angular/common/locales/es-CL';
 import { TruncateLetterPipe } from './pipes/truncate-letter.pipe';
 import { FormProductsComponent } from './components/products/form-products/form-products.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { FormClientsComponent } from './components/clients/form-clients/form-clients.component';
+import { OrderListPipe } from './pipes/order-list.pipe';
+import { StoreComponent } from './components/store/store.component';
 
 registerLocaleData(localeES,'es');
 
@@ -36,7 +39,10 @@ registerLocaleData(localeES,'es');
     Page404Component,
     UnderConstructionComponent,
     TruncateLetterPipe,
-    FormProductsComponent
+    FormProductsComponent,
+    FormClientsComponent,
+    OrderListPipe,
+    StoreComponent
   ],
   imports: [
     BrowserModule,

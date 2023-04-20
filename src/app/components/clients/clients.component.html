@@ -5,7 +5,7 @@
             <p>{{ mensaje }}</p>
         </div>
         <div class="col-md-6 text-end align-middle">
-            <button class="btn btn-outline-primary" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Crear nuevo registro">
+            <button class="btn btn-outline-primary" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Crear nuevo registro" [routerLink]="['/clients/form-clients']">
                 <span class="fs-1">
                     <fa-icon [icon]="faAddPerson"></fa-icon>
                 </span>
@@ -13,40 +13,31 @@
         </div>
     </div>
 </div>
-<div *ngIf="clients.length > 0; else NoHayAlumnos" class="container my-4">
+<div  class="container my-4">
     <div class="table-responsive">
         <table class="table table-bordered table-hover">
             <thead class="table-dark">
                 <tr class="text-center">
-                    <th>ID</th>
-                    <th>Rut</th>
-                    <th>Nombre</th>
-                    <th>Email</th>
-                    <th>Genero</th>
-                    <th>Fecha Nacimiento</th>
-                    <th>Arancel</th>
+                    <th (click)="orderListClients('idUser')">ID</th>
+                    <th (click)="orderListClients('rut')">Rut</th>
+                    <th (click)="orderListClients('name')">Nombre</th>
+                    <th (click)="orderListClients('email')">Email</th>
                     <th>Acciones</th>
                 </tr>
             </thead>
             <tbody>
-                <tr *ngFor="let client of clients">
-                    <td class="text-center">{{client.id}}</td>
+                <tr *ngFor="let client of clients | orderList : optionSort.property : optionSort.order">
+                    <td class="text-center">{{client.idUser}}</td>
                     <td class="text-end">{{client.rut}}</td>
-                    <td>{{client.nombre}} {{client.apellido}}</td>
+                    <td>{{client.name}} {{client.lastName}}</td>
                     <td>{{client.email}}</td>
-                    <td class="text-center">{{client.genero |uppercase | truncateLetter:1:'' }}</td>
-                    <td class="text-center">{{client.fechaNacimiento | date: 'dd-MMM-yyyy'}}</td>
-                    <td class="text-end">{{client.arancel | currency: 'CLP': 'symbol-narrow': '1.0-0'}}</td>
                     <td>
                         <div class="row">
                             <div class="col-md-6 text-center">
-                                <button class="btn btn-outline-warning mb-1" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Editar">
-                                    <fa-icon [icon]="faEditPerson"></fa-icon>
-                                </button>
-                            </div>
-                            <div class="col-md-6 text-center">
-                                <button class="btn btn-outline-danger" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Eliminar">
-                                    <fa-icon [icon]="faDeletePerson"></fa-icon>
+                                <button class="btn btn-danger" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Eliminar" (click)="eliminarClient(client)">
+                                    <span class="fs-5">
+                                        <fa-icon [icon]="faDeletePerson"></fa-icon>
+                                    </span>
                                 </button>
                             </div>
                         </div>
@@ -57,7 +48,7 @@
     </div>
 </div>
 
-<ng-template #NoHayAlumnos>
+<ng-template #NoHayUsuarios>
     <div class="container my-4 py-3 rounded">
         <div class="card">
             <div class="card-header text-center">

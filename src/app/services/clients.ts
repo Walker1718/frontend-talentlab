@@ -1,10 +1,8 @@
 export class Clients {
-    id : number = 0;
+    idUser : number = 0;
     rut : string = '';
-    nombre : string = '';
-    apellido : string = '';
+    name : string = '';
+    lastName : string = '';
+    authority : string = '';
     email : string = '';
-    genero : string = '';
-    fechaNacimiento : string = '';
-    arancel : number = 0;
 }

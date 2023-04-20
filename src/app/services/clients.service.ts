@@ -1,14 +1,17 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { Observable, catchError, throwError } from 'rxjs';
+import { Observable, catchError, map, throwError } from 'rxjs';
 import { Router } from '@angular/router';
+
+import Swal from 'sweetalert2';
+import { Clients } from './clients';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ClientsService {
 
-  private urlEndPoint: string = 'http://localhost:8088/api/clients';
+  private urlEndPoint: string = 'http://localhost:8088/api/users';
 
   private httpHeaders = new HttpHeaders({'Content-type': 'application/json'})
 
@@ -27,7 +30,46 @@ export class ClientsService {
     );
   }
 
-  
+  getClient(id: number): Observable<any> {
+    return this.http.get<any>(`${this.urlEndPoint}/${id}`).pipe(
+      catchError(e => {
+        this.router.navigate([`/clients`]);
+        console.error(e.error.mensaje);
+        Swal.fire(e.error.mensaje, e.error.error, 'error');
+        return throwError(() => {
+          const error: any = new Error(e.error.mensaje);
+          return error;
+        });
+      })
+    );
+  }
+
+  createClients(client: Clients) : Observable<any> {
+    return this.http.post(this.urlEndPoint, client, { headers : this.httpHeaders}).pipe(
+      map((response: any) => response.client as Clients),
+      catchError(e => {
+        console.error(e.error.mensaje);
+        Swal.fire(e.error.mensaje, e.error.error, 'error');
+        return throwError(() => {
+          const error: any = new Error(e.error.mensaje);
+          return error;
+        });
+      })
+    )
+  }
+
+  deleteClient(id: number): Observable<any> {
+    return this.http.delete<any>(`${this.urlEndPoint}/${id}`,{ headers : this.httpHeaders}).pipe(
+      catchError(e => {
+        console.error(e.error.mensaje);
+        Swal.fire(e.error.mensaje, e.error.error, 'error');
+        return throwError(() => {
+          const error: any = new Error(e.error.mensaje);
+          return error;
+        });
+      })
+    );
+  }
 
 
 }

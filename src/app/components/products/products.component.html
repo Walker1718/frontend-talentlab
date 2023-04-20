@@ -24,14 +24,16 @@
                     <th>Precio</th>
                     <th>Categoria</th>
                     <th>Stock</th>
+                    <th>Acciones</th>
                 </tr>
             </thead>
             <tbody>
                 <tr *ngFor="let product of products">
                     <td class="text-center">{{product.idProduct}}</td>
                     <td class="text-end">{{product.name}}</td>
-                    <td class="text-end">{{product.category}}</td>
                     <td class="text-end">{{product.price | currency: 'CLP': 'symbol-narrow': '1.0-0'}}</td>
+                    <td class="text-end">{{product.category}}</td>
+                    <td class="text-end">{{product.stock}}</td>
                     <td>
                         <div class="row">
                             <div class="col-md-6 text-center">
