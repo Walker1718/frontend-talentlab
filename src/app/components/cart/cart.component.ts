@@ -2,8 +2,9 @@ import { Component,Input, OnInit } from '@angular/core';
 import { Cart } from 'src/app/services/cart';
 import { faTriangleExclamation, faCartShopping} from '@fortawesome/free-solid-svg-icons';
 import { CartService } from 'src/app/services/cart.service';
-
+import { CartItemsService } from 'src/app/services/cart-items.service';
 import Swal from 'sweetalert2';
+import { CartItems } from 'src/app/services/cart-items';
 
 @Component({
   selector: 'app-cart',
@@ -11,6 +12,7 @@ import Swal from 'sweetalert2';
   styleUrls: ['./cart.component.css']
 })
 export class CartComponent implements OnInit {
+  [x: string]: any;
 @Input() cart : Cart = new Cart;
 @Input() mensaje: string = '';
 titulo : string = 'Carrito de compras';
@@ -30,6 +32,12 @@ constructor(private cartService: CartService) {}
       }
     );
   }
-  
+ onSubmit() : void{
+
+ }
+ updateQuantity(cartItem: CartItems): void {
+  cartItem : cartItem = new CartItems;
+  //cartItem = updatedCartItem;
+}
 }
 

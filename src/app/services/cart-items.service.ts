@@ -57,9 +57,9 @@ export class CartItemsService {
       })
     )
   }
-
+  ///cart-items/{id}/edit"
   updateCartItem(cartItem : CartItems) : Observable<any> {
-    return this.http.put(`${this.urlEndPoint}/${cartItem.idCartItem}`,cartItem, { headers : this.httpHeaders }).pipe(
+    return this.http.put(`${this.urlEndPoint}/${cartItem.idCartItem}/edit`,cartItem, { headers : this.httpHeaders }).pipe(
       catchError(e => {
         console.error(e.error.mensaje);
         Swal.fire(e.error.mensaje, e.error.error, 'error');
@@ -70,9 +70,9 @@ export class CartItemsService {
       })
     );
   }
-
+  ///cart-items/{id}/delete
   deleteCartItem(id: number): Observable<any> {
-    return this.http.delete<any>(`${this.urlEndPoint}/${id}`,{ headers : this.httpHeaders}).pipe(
+    return this.http.delete<any>(`${this.urlEndPoint}/${id}/delete`,{ headers : this.httpHeaders}).pipe(
       catchError(e => {
         console.error(e.error.mensaje);
         Swal.fire(e.error.mensaje, e.error.error, 'error');
