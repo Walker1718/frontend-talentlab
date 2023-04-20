@@ -31,7 +31,7 @@ export class ClientsComponent implements OnInit{
   getClients() : void {
     this.clientsService.getClients().subscribe(
       (data) => {
-        this.clients = data.clients;
+        this.clients = data.users;
         this.mensaje = data.mensaje;
         console.log(this.clients);
         console.log(this.mensaje);
