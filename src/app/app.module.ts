@@ -20,9 +20,14 @@ import localeES from '@angular/common/locales/es-CL';
 import { TruncateLetterPipe } from './pipes/truncate-letter.pipe';
 import { FormProductsComponent } from './components/products/form-products/form-products.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { CartComponent } from './components/cart/cart.component';
+import { CartItemsComponent } from './components/cart-items/cart-items.component';
+import Swal from 'sweetalert2';
+import { SalesComponent } from './components/sales/sales.component';
 import { FormClientsComponent } from './components/clients/form-clients/form-clients.component';
 import { OrderListPipe } from './pipes/order-list.pipe';
 import { StoreComponent } from './components/store/store.component';
+
 
 registerLocaleData(localeES,'es');
 
@@ -40,9 +45,13 @@ registerLocaleData(localeES,'es');
     UnderConstructionComponent,
     TruncateLetterPipe,
     FormProductsComponent,
+    CartComponent,
+    CartItemsComponent,
+    SalesComponent,
     FormClientsComponent,
     OrderListPipe,
     StoreComponent
+
   ],
   imports: [
     BrowserModule,
@@ -51,6 +60,7 @@ registerLocaleData(localeES,'es');
     FontAwesomeModule,
     FormsModule,
     ReactiveFormsModule,
+
   ],
   providers: [
     { 
@@ -60,3 +70,5 @@ registerLocaleData(localeES,'es');
   bootstrap: [AppComponent]
 })
 export class AppModule { }
+
+
