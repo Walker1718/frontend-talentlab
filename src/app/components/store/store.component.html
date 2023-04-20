@@ -36,12 +36,8 @@
         <div class="row">
             <div class="col-md-4" *ngFor="let product of products">
                 <div class="card mb-4 box-shadow">
-                    <img class="card-img-top"
-                        data-src="holder.js/100px225?theme=thumb&amp;bg=55595c&amp;fg=eceeef&amp;text=Thumbnail"
-                        alt="Thumbnail [100%x225]"
-                        style="height: 225px; width: 100%; display: block;"
-                        src="https://picsum.photos/200"
-                        data-holder-rendered="true">
+                   
+                    <img src="{{product.image}}" style="height: 325px; width: 100%; display: block;"/>
                     <div class="card-body">
                         <p class="card-text" >{{product.idProduct}}</p>
                         <p class="card-text" >{{product.name}}</p>
