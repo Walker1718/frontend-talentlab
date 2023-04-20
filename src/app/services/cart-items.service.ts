@@ -4,23 +4,23 @@ import { Observable, catchError, map, throwError } from 'rxjs';
 import { Router } from '@angular/router';
 
 import Swal  from 'sweetalert2';
-import { Products } from './products';
+import { CartItems } from './cart-items';
 
 @Injectable({
   providedIn: 'root'
 })
-export class ProductsService {
+export class CartItemsService {
   
-  private urlEndPoint: string = 'http://localhost:8088/api/products';
+  private urlEndPoint: string = 'http://localhost:8088/api/cart-items';
 
   private httpHeaders = new HttpHeaders({'Content-type': 'application/json'})
 
   constructor(private http: HttpClient, private router: Router) { }
 
-  getProducts(): Observable<any> {
+  getCartItems(): Observable<any> {
     return this.http.get<any>(this.urlEndPoint).pipe(
       catchError(e => {
-        this.router.navigate([`/products`]);
+        this.router.navigate([`/cart-items`]);
         console.error(e.error.mensaje);
         return throwError(() => {
           const error: any = new Error(e.error.mensaje);
@@ -30,10 +30,10 @@ export class ProductsService {
     );
   }
 
-  getProduct(id: number): Observable<any> {
+  getCartItem(id: number): Observable<any> {
     return this.http.get<any>(`${this.urlEndPoint}/${id}`).pipe(
       catchError(e => {
-        this.router.navigate([`/products`]);
+        this.router.navigate([`/cart-items`]);
         console.error(e.error.mensaje);
         Swal.fire(e.error.mensaje, e.error.error, 'error');
         return throwError(() => {
@@ -44,9 +44,9 @@ export class ProductsService {
     );
   }
 
-  createProduct(product: Products) : Observable<any> {
-    return this.http.post(this.urlEndPoint, product, { headers : this.httpHeaders}).pipe(
-      map((response: any) => response.product as Products),
+  createCartItem(cartItem: CartItems) : Observable<any> {
+    return this.http.post(this.urlEndPoint, cartItem, { headers : this.httpHeaders}).pipe(
+      map((response: any) => response.cartItem as CartItems), // cambiar el nombre de la clase
       catchError(e => {
         console.error(e.error.mensaje);
         Swal.fire(e.error.mensaje, e.error.error, 'error');
@@ -57,9 +57,9 @@ export class ProductsService {
       })
     )
   }
-
-  updateProduct(product : Products) : Observable<any> {
-    return this.http.put(`${this.urlEndPoint}/${product.idProduct}`,product, { headers : this.httpHeaders }).pipe(
+  ///cart-items/{id}/edit"
+  updateCartItem(cartItem : CartItems) : Observable<any> {
+    return this.http.put(`${this.urlEndPoint}/${cartItem.idCartItem}/edit`,cartItem, { headers : this.httpHeaders }).pipe(
       catchError(e => {
         console.error(e.error.mensaje);
         Swal.fire(e.error.mensaje, e.error.error, 'error');
@@ -70,9 +70,9 @@ export class ProductsService {
       })
     );
   }
-
-  deleteProduct(id: number): Observable<any> {
-    return this.http.delete<any>(`${this.urlEndPoint}/${id}`,{ headers : this.httpHeaders}).pipe(
+  ///cart-items/{id}/delete
+  deleteCartItem(id: number): Observable<any> {
+    return this.http.delete<any>(`${this.urlEndPoint}/${id}/delete`,{ headers : this.httpHeaders}).pipe(
       catchError(e => {
         console.error(e.error.mensaje);
         Swal.fire(e.error.mensaje, e.error.error, 'error');
@@ -85,3 +85,7 @@ export class ProductsService {
   }
 
 }
+
+
+
+
