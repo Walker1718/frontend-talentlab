@@ -19,16 +19,16 @@
         <table class="table table-bordered table-hover">
             <thead class="table-dark">
                 <tr class="text-center">
-                    <th>ID</th>
-                    <th>Nombre</th>
-                    <th>Precio</th>
-                    <th>Categoria</th>
-                    <th>Stock</th>
+                    <th (click)="orderListProducts('idProduct')">ID</th>
+                    <th (click)="orderListProducts('name')">Nombre</th>
+                    <th (click)="orderListProducts('price')">Precio</th>
+                    <th (click)="orderListProducts('category')">Categoria</th>
+                    <th (click)="orderListProducts('stock')">Stock</th>
                     <th>Acciones</th>
                 </tr>
             </thead>
             <tbody>
-                <tr *ngFor="let product of products">
+                <tr *ngFor="let product of products | orderList : optionSort.property : optionSort.order">
                     <td class="text-center">{{product.idProduct}}</td>
                     <td class="text-end">{{product.name}}</td>
                     <td class="text-end">{{product.price | currency: 'CLP': 'symbol-narrow': '1.0-0'}}</td>
