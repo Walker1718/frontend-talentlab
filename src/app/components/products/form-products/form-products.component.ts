@@ -102,6 +102,7 @@ export class FormProductsComponent implements OnInit{
   }
 
   createProduct() : void {
+    this.product.image = this.imageBase64;
     this.productService.createProduct(this.product).subscribe(
       product => {
         console.log(product);
