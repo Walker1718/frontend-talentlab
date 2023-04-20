@@ -1,5 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { faTriangleExclamation, faPenSquare, faTrashCan, faRectangleAd} from '@fortawesome/free-solid-svg-icons';
+import { faTriangleExclamation, faPenSquare, faTrashCan, faRectangleAd, faCartPlus} from '@fortawesome/free-solid-svg-icons';
 import { Products } from 'src/app/services/products';
 import { ProductsService } from 'src/app/services/products.service';
 import Swal from 'sweetalert2';
@@ -18,6 +18,7 @@ export class StoreComponent {
   faEditProduct = faPenSquare;
   faDeleteProduct = faTrashCan;
   faAddProduct = faRectangleAd;
+  faCartPlus = faCartPlus;
 
   constructor(private productService: ProductsService) {}
 
