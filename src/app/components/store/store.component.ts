@@ -1,15 +1,15 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { faTriangleExclamation, faPenSquare, faTrashCan, faRectangleAd} from '@fortawesome/free-solid-svg-icons';
+import { faTriangleExclamation, faPenSquare, faTrashCan, faRectangleAd, faCartPlus} from '@fortawesome/free-solid-svg-icons';
 import { Products } from 'src/app/services/products';
 import { ProductsService } from 'src/app/services/products.service';
 import Swal from 'sweetalert2';
 
 @Component({
-  selector: 'app-products',
-  templateUrl: './products.component.html',
-  styleUrls: ['./products.component.css']
+  selector: 'app-store',
+  templateUrl: './store.component.html',
+  styleUrls: ['./store.component.css']
 })
-export class ProductsComponent implements OnInit{
+export class StoreComponent {
 
   @Input() products : Products[] = [];
   @Input() mensaje: string = '';
@@ -18,8 +18,7 @@ export class ProductsComponent implements OnInit{
   faEditProduct = faPenSquare;
   faDeleteProduct = faTrashCan;
   faAddProduct = faRectangleAd;
-
-  optionSort: { property: string | null, order : string } = { property : null, order : 'asc' };
+  faCartPlus = faCartPlus;
 
   constructor(private productService: ProductsService) {}
 
@@ -37,15 +36,6 @@ export class ProductsComponent implements OnInit{
       }
     );
   }
-
-  orderListProducts(property : string) : void {
-    const order = this.optionSort.order;
-    this.optionSort = {
-      property,
-      order : order === 'asc' ? 'desc' : 'asc'
-    }
-  }  
-
 
   eliminarProduct(product: Products) : void{
     const swalWithBootstrapButtons = Swal.mixin({

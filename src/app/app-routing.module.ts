@@ -9,6 +9,8 @@ import { ProductsComponent } from './components/products/products.component';
 import { FormProductsComponent } from './components/products/form-products/form-products.component';
 import { CartComponent } from './components/cart/cart.component';
 import { CartItemsComponent } from './components/cart-items/cart-items.component';
+import { FormClientsComponent } from './components/clients/form-clients/form-clients.component';
+import { StoreComponent } from './components/store/store.component';
 
 const routes: Routes = [
   {
@@ -28,6 +30,12 @@ const routes: Routes = [
     path: 'clients', component: ClientsComponent,
   },
   {
+    path: 'clients/form-clients', component: FormClientsComponent,
+  },
+  {
+    path: 'clients/form-clients/:id', component: FormClientsComponent,
+  },
+  {
     path: 'products', component: ProductsComponent,
   },
   {
@@ -44,6 +52,12 @@ const routes: Routes = [
   },
   {
     path: 'nosotros', component: NosotrosComponent,
+  },
+  {
+    path: 'store', component: StoreComponent,
+  },
+  {
+    path: 'store/add', component: StoreComponent,
   },
   {
     path: '404', component: Page404Component,

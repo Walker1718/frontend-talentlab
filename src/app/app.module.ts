@@ -22,10 +22,12 @@ import { FormProductsComponent } from './components/products/form-products/form-
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { CartComponent } from './components/cart/cart.component';
 import { CartItemsComponent } from './components/cart-items/cart-items.component';
-
-
 import Swal from 'sweetalert2';
 import { SalesComponent } from './components/sales/sales.component';
+import { FormClientsComponent } from './components/clients/form-clients/form-clients.component';
+import { OrderListPipe } from './pipes/order-list.pipe';
+import { StoreComponent } from './components/store/store.component';
+
 
 registerLocaleData(localeES,'es');
 
@@ -45,7 +47,11 @@ registerLocaleData(localeES,'es');
     FormProductsComponent,
     CartComponent,
     CartItemsComponent,
-    SalesComponent
+    SalesComponent,
+    FormClientsComponent,
+    OrderListPipe,
+    StoreComponent
+
   ],
   imports: [
     BrowserModule,
