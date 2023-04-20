@@ -1,6 +1,5 @@
 import { LOCALE_ID, NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './components/header/header.component';
@@ -14,7 +13,6 @@ import { Page404Component } from './components/page404/page404.component';
 import { UnderConstructionComponent } from './components/under-construction/under-construction.component';
 import { HttpClientModule } from '@angular/common/http';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
-
 import { registerLocaleData } from '@angular/common';
 import localeES from '@angular/common/locales/es-CL';
 import { TruncateLetterPipe } from './pipes/truncate-letter.pipe';
@@ -22,7 +20,6 @@ import { FormProductsComponent } from './components/products/form-products/form-
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { CartComponent } from './components/cart/cart.component';
 import { CartItemsComponent } from './components/cart-items/cart-items.component';
-import Swal from 'sweetalert2';
 import { SalesComponent } from './components/sales/sales.component';
 import { FormClientsComponent } from './components/clients/form-clients/form-clients.component';
 import { OrderListPipe } from './pipes/order-list.pipe';
