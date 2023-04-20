@@ -21,14 +21,17 @@ export class FormProductsComponent implements OnInit{
     name: new FormControl(''),
     price : new FormControl(''),
     category : new FormControl(''),
-    stock : new FormControl('')
+    stock : new FormControl(''),
+    image : new FormControl('')
   })
+
+  imageBase64: string = '';
 
   constructor(
     private formBuilder: FormBuilder,
     private productService: ProductsService,
     private router: Router,
-    private activatedRoute: ActivatedRoute
+    private activatedRoute: ActivatedRoute,
   ) { }
 
   ngOnInit(): void {
@@ -60,6 +63,12 @@ export class FormProductsComponent implements OnInit{
           [
             Validators.required
           ]
+        ],
+        image : [
+          '',
+          [
+            Validators.required
+          ]
         ],      
       }
     )
@@ -67,6 +76,16 @@ export class FormProductsComponent implements OnInit{
 
   get f():  { [key: string] : AbstractControl } {
     return this.form.controls;
+  }
+
+  onFileSelected(event: any): void {
+    const file: File = event.target.files[0];
+    const reader = new FileReader();
+    reader.readAsDataURL(file);
+    reader.onload = () => {
+      this.imageBase64 = reader.result as string;
+      console.log(this.imageBase64);
+    };
   }
 
   onSubmit() : void {
@@ -104,6 +123,8 @@ export class FormProductsComponent implements OnInit{
   }
 
   updateProduct(): void {
+    console.log(this.product);
+    this.product.image = this.imageBase64;
     this.productService.updateProduct(this.product).subscribe(
       product => {
         this.router.navigateByUrl('/products');
@@ -118,5 +139,7 @@ export class FormProductsComponent implements OnInit{
     );
 
   }
+
+
 
 }

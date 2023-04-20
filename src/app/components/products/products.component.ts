@@ -19,6 +19,7 @@ export class ProductsComponent implements OnInit{
   faDeleteProduct = faTrashCan;
   faAddProduct = faRectangleAd;
 
+
   constructor(private productService: ProductsService) {}
 
   ngOnInit(): void {
@@ -35,6 +36,9 @@ export class ProductsComponent implements OnInit{
       }
     );
   }
+
+  
+
 
   eliminarProduct(product: Products) : void{
     const swalWithBootstrapButtons = Swal.mixin({
