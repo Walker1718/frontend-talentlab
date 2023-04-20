@@ -11,7 +11,7 @@ import { Cart } from './cart';
 })
 export class CartService {
 
-  private urlEndPoint: string = 'http://localhost:8088/api/carts/{cart_id}';
+  private urlEndPoint: string = 'http://localhost:8088/api/carts';
 
   private httpHeaders = new HttpHeaders({'Content-type': 'application/json'})
 
