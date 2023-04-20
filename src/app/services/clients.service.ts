@@ -44,9 +44,20 @@ export class ClientsService {
     );
   }
 
+  getClientByEmail(email: string): Observable<any> {
+    return this.http.get<any>(`${this.urlEndPoint}/email`, {params: {email: email}}).pipe(
+      catchError(e => {
+        return throwError(() => {
+          const error: any = new Error(e.error.mensaje);
+          error.status = e.status
+          return error;
+        });
+      })
+    );
+  }
+
   createClients(client: Clients) : Observable<any> {
     return this.http.post(this.urlEndPoint, client, { headers : this.httpHeaders}).pipe(
-      map((response: any) => response.client as Clients),
       catchError(e => {
         console.error(e.error.mensaje);
         Swal.fire(e.error.mensaje, e.error.error, 'error');

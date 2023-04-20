@@ -23,6 +23,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { FormClientsComponent } from './components/clients/form-clients/form-clients.component';
 import { OrderListPipe } from './pipes/order-list.pipe';
 import { StoreComponent } from './components/store/store.component';
+import { AuthModule } from '@auth0/auth0-angular';
 
 registerLocaleData(localeES,'es');
 
@@ -51,6 +52,13 @@ registerLocaleData(localeES,'es');
     FontAwesomeModule,
     FormsModule,
     ReactiveFormsModule,
+    AuthModule.forRoot({
+      domain: 'brant-ntt.us.auth0.com',
+      clientId: 'JXjwW7JwWaf06xYEDqIgzN2GQL1mkfkm',
+      authorizationParams: {
+        redirect_uri: window.location.origin
+      }
+    }),
   ],
   providers: [
     { 

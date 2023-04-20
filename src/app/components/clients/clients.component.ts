@@ -66,7 +66,7 @@ export class ClientsComponent implements OnInit{
       reverseButtons: true
     }).then((result) => {
       if (result.isConfirmed) {
-        this.clientsService.deleteClient(client.idUser).subscribe(
+        this.clientsService.deleteClient(client.idUser ?? 0).subscribe(
           response => {
             this.clients = this.clients.filter(a => a != client)
             swalWithBootstrapButtons.fire(
