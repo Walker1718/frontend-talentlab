@@ -1,6 +1,6 @@
 import { Component,Input, OnInit } from '@angular/core';
 import { Cart } from 'src/app/services/cart';
-import { faTriangleExclamation, faCartShopping} from '@fortawesome/free-solid-svg-icons';
+import { faTrashCan,faMinus,faPlus} from '@fortawesome/free-solid-svg-icons';
 import { CartService } from 'src/app/services/cart.service';
 import { CartItemsService } from 'src/app/services/cart-items.service';
 import Swal from 'sweetalert2';
@@ -15,6 +15,9 @@ export class CartComponent implements OnInit {
 @Input() cart : Cart = new Cart;
 @Input() mensaje: string = '';
 titulo : string = 'Carrito de compras';
+faDeleteProduct = faTrashCan;
+faPlus = faPlus;
+faMinus = faMinus;
 
 constructor(private cartService: CartService, private cartItemsService: CartItemsService) {}
 
@@ -42,7 +45,7 @@ constructor(private cartService: CartService, private cartItemsService: CartItem
     }
   );
  }
- deleteItem(cartItem: CartItems):void{
+ deleteCartItem(cartItem: CartItems):void{
   this.cartItemsService.deleteCartItem(cartItem.idCartItem).subscribe( 
     (data)=>{
       this.getCart();

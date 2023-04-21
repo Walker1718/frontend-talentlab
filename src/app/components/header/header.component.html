@@ -21,6 +21,9 @@
                     <a class="nav-link d-inline-block" routerLink="products">Lista de productos</a>
                 </li>
                 <li class="nav-item" routerLinkActive="active">
+                    <a class="nav-link" routerLink="sales">Ventas</a>
+                </li>
+                <li class="nav-item" routerLinkActive="active">
                     <a class="nav-link d-inline-block" routerLink="nosotros">Nosotros</a>
                 </li>
                 <li *ngIf="isAuthenticated" class="nav-item" routerLinkActive="active">
@@ -47,9 +50,7 @@
                 <li class="nav-item">
                     <a class="btn btn-outline-warning m-2" (click)="logout()" *ngIf="isAuthenticated">Logout</a>
                 </li>
-                <li class="nav-item" routerLinkActive="active">
-                    <a class="nav-link" routerLink="sales">Ventas</a>
-                </li>
+                
             </ul>
         </div>
     </div>
