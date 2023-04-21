@@ -10,6 +10,8 @@ export class OrderListPipe implements PipeTransform {
       return value;
     }
     else {
+      console.log(property);
+      console.log(value);
       const tmpList = value.sort( (a,b) => {
         if (a[property] < b[property] ) {
           return -1;

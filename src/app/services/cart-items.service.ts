@@ -59,7 +59,7 @@ export class CartItemsService {
   }
   ///cart-items/{id}/edit"
   updateCartItem(cartItem : CartItems) : Observable<any> {
-    return this.http.put(`${this.urlEndPoint}/${cartItem.idCartItem}/edit`,cartItem, { headers : this.httpHeaders }).pipe(
+    return this.http.put(`${this.urlEndPoint}/${cartItem.idCartItem}/edit`, { headers : this.httpHeaders, params:{quantity : cartItem.quantity}}).pipe(
       catchError(e => {
         console.error(e.error.mensaje);
         Swal.fire(e.error.mensaje, e.error.error, 'error');

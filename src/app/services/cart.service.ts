@@ -10,6 +10,10 @@ import { Cart } from './cart';
   providedIn: 'root'
 })
 export class CartService {
+  static updateCartItem: typeof import("c:/Users/jlazofue/Documents/NTTDATA/frontend/frontend-talentlab/src/app/services/cart-items").CartItems;
+  updateCartItem(id: any, quantity: number) {
+    throw new Error('Method not implemented.');
+  }
 
   private urlEndPoint: string = 'http://localhost:8088/api/carts';
 

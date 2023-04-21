@@ -12,12 +12,11 @@ import { CartItems } from 'src/app/services/cart-items';
   styleUrls: ['./cart.component.css']
 })
 export class CartComponent implements OnInit {
-  [x: string]: any;
 @Input() cart : Cart = new Cart;
 @Input() mensaje: string = '';
 titulo : string = 'Carrito de compras';
 
-constructor(private cartService: CartService) {}
+constructor(private cartService: CartService, private cartItemsService: CartItemsService) {}
 
   ngOnInit(): void {
     this.getCart();
@@ -36,8 +35,21 @@ constructor(private cartService: CartService) {}
 
  }
  updateQuantity(cartItem: CartItems): void {
-  cartItem : cartItem = new CartItems;
-  //cartItem = updatedCartItem;
-}
+  
+  this.cartItemsService.updateCartItem(cartItem).subscribe( 
+    (data)=>{
+      this.getCart();
+    }
+  );
+ }
+ deleteItem(cartItem: CartItems):void{
+  this.cartItemsService.deleteCartItem(cartItem.idCartItem).subscribe( 
+    (data)=>{
+      this.getCart();
+    }
+  );
+
+ }
+
 }
 
