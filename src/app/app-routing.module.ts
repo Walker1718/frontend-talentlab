@@ -12,6 +12,7 @@ import { CartItemsComponent } from './components/cart-items/cart-items.component
 import { FormClientsComponent } from './components/clients/form-clients/form-clients.component';
 import { StoreComponent } from './components/store/store.component';
 import { SalesComponent } from './components/sales/sales.component';
+import { AuthGuard } from '@auth0/auth0-angular';
 
 const routes: Routes = [
   {
@@ -24,9 +25,8 @@ const routes: Routes = [
     path: 'index', redirectTo: '',
   },
   {
-    path: 'starwars', component: StarwarsComponent,
+    path: 'starwars', component: StarwarsComponent, canActivate: [AuthGuard]
   },
-  
   {
     path: 'clients', component: ClientsComponent,
   },
@@ -55,7 +55,7 @@ const routes: Routes = [
     path: 'nosotros', component: NosotrosComponent,
   },
   {
-    path: 'store', component: StoreComponent,
+    path: 'store', component: StoreComponent, canActivate: [AuthGuard]
   },
   {
     path: 'store/add', component: StoreComponent,
