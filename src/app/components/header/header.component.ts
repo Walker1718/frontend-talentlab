@@ -2,7 +2,7 @@ import { DOCUMENT, Location } from '@angular/common';
 import { Component, Inject, Input, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { AuthService } from '@auth0/auth0-angular';
-import { Observable, interval, map } from 'rxjs';
+import { BehaviorSubject, Observable, interval, map } from 'rxjs';
 import { Clients } from 'src/app/services/clients';
 import { ClientsService } from 'src/app/services/clients.service';
 
