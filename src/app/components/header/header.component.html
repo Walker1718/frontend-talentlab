@@ -29,10 +29,24 @@
                 </li>
             </ul>
             <div class="clock">
-                <span>
+                <span *ngIf="!isAuthenticated">
                     La hora es {{currentTime$ | async | date:'hh:mm:ss a'}}
                 </span>
+                <span *ngIf="isAuthenticated && user">
+                    Hola {{ user.name }}! La hora es {{currentTime$ | async | date:'hh:mm:ss a'}}
+                </span>
             </div>
+            <ul class="navbar-nav d-flex ms-auto">
+                <li class="nav-item">
+                    <a class="btn btn-outline-success m-2" (click)="login()" *ngIf="!isAuthenticated">Login</a>
+                </li>
+                <li class="nav-item">
+                    <a class="btn btn-outline-primary m-2" [routerLink]="['/profile']" *ngIf="isAuthenticated">Perfil</a>
+                </li>
+                <li class="nav-item">
+                    <a class="btn btn-outline-warning m-2" (click)="logout()" *ngIf="isAuthenticated">Logout</a>
+                </li>
+            </ul>
         </div>
     </div>
 </nav>
