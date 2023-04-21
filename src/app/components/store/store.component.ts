@@ -1,7 +1,10 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { faTriangleExclamation, faPenSquare, faTrashCan, faRectangleAd, faCartPlus} from '@fortawesome/free-solid-svg-icons';
+import { faTriangleExclamation, faPenSquare, faTrashCan, faRectangleAd, faCartPlus,faMinus,faPlus} from '@fortawesome/free-solid-svg-icons';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Products } from 'src/app/services/products';
 import { ProductsService } from 'src/app/services/products.service';
+import { CartItemsService } from 'src/app/services/cart-items.service';
+import { CartItems } from 'src/app/services/cart-items';
 import Swal from 'sweetalert2';
 
 @Component({
@@ -13,14 +16,23 @@ export class StoreComponent {
 
   @Input() products : Products[] = [];
   @Input() mensaje: string = '';
+  @Input() cartItem : CartItems = new CartItems;
   titulo : string = 'Productos';
   faExclamation = faTriangleExclamation;
   faEditProduct = faPenSquare;
   faDeleteProduct = faTrashCan;
   faAddProduct = faRectangleAd;
   faCartPlus = faCartPlus;
+  faPlus = faPlus;
+  faMinus = faMinus;
 
-  constructor(private productService: ProductsService) {}
+
+
+  constructor(
+    private productService: ProductsService,
+    private cartItemsService: CartItemsService,
+    private router: Router,
+  ){}
 
   ngOnInit(): void {
     this.getProducts();
@@ -37,47 +49,21 @@ export class StoreComponent {
     );
   }
 
-  eliminarProduct(product: Products) : void{
-    const swalWithBootstrapButtons = Swal.mixin({
-      customClass: {
-        confirmButton: 'btn btn-success m-2',
-        cancelButton: 'btn btn-danger m-2'
-      },
-      buttonsStyling: false
-    })
+  onSubmit(idCart: number, idProduct : number, quantity : string) : void {
     
-    swalWithBootstrapButtons.fire({
-      title: 'Estás seguro?',
-      text: `Deseas eliminar el producto ${product.name} ? Esta acción no se puede revertir`,
-      icon: 'warning',
-      showCancelButton: true,
-      confirmButtonText: 'Si, eliminar!',
-      cancelButtonText: 'No!!',
-      reverseButtons: true
-    }).then((result) => {
-      if (result.isConfirmed) {
-        this.productService.deleteProduct(product.idProduct).subscribe(
-          response => {
-            this.products = this.products.filter(a => a!= product)
-            swalWithBootstrapButtons.fire(
-              'Eliminado!',
-              'El producto ha sido eliminado',
-              'success'
-            )
-          }
-        )
-        
-      } else if (
-        /* Read more about handling dismissals below */
-        result.dismiss === Swal.DismissReason.cancel
-      ) {
-        swalWithBootstrapButtons.fire(
-          'Acción cancelada',
-          'El cielo es de los arrepentidos',
-          'error'
-        )
+    console.log(idCart, idProduct, parseInt(quantity))
+
+    this.createCartItem(idCart, idProduct, parseInt(quantity));
+  }
+
+  createCartItem( idCart: number, idProduct : number, quantity: number) : void {
+    this.cartItemsService.createCartItem( idCart, idProduct, quantity ).subscribe(
+      cartItem => {
+        console.log(cartItem);
+        this.router.navigate(['/store']);
+        Swal.fire('Producto agregado al carrito','Añadido con exito','success');
       }
-    })
+    );
   }
 
 }

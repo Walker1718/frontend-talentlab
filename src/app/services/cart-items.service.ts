@@ -44,9 +44,13 @@ export class CartItemsService {
     );
   }
 
-  createCartItem(cartItem: CartItems) : Observable<any> {
-    return this.http.post(this.urlEndPoint, cartItem, { headers : this.httpHeaders}).pipe(
-      map((response: any) => response.cartItem as CartItems), // cambiar el nombre de la clase
+
+
+  createCartItem( idCart: number, idProduct : number, quantity: number) : Observable<any> {
+
+    let body : object = { cart_id: idCart, product_id: idProduct, quantity: quantity}
+
+    return this.http.post(this.urlEndPoint, body, { headers : this.httpHeaders}).pipe(
       catchError(e => {
         console.error(e.error.mensaje);
         Swal.fire(e.error.mensaje, e.error.error, 'error');
@@ -57,6 +61,7 @@ export class CartItemsService {
       })
     )
   }
+  
   ///cart-items/{id}/edit"
   updateCartItem(cartItem : CartItems) : Observable<any> {
     return this.http.put(`${this.urlEndPoint}/${cartItem.idCartItem}/edit`,cartItem, { headers : this.httpHeaders }).pipe(
