@@ -1,15 +1,30 @@
 import { TestBed } from '@angular/core/testing';
 import { RouterTestingModule } from '@angular/router/testing';
 import { AppComponent } from './app.component';
+import { AuthModule, AuthService } from '@auth0/auth0-angular';
+import { HeaderComponent } from './components/header/header.component';
+import { FooterComponent } from './components/footer/footer.component';
+import { HttpClientTestingModule } from '@angular/common/http/testing';
+import { OrderListPipe } from './pipes/order-list.pipe';
 
 describe('AppComponent', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       imports: [
-        RouterTestingModule
+        RouterTestingModule,
+        HttpClientTestingModule,
+        AuthModule.forRoot({
+          domain: 'christiansarmiento-facilita.us.auth0.com',
+          clientId: 'awv5Om11sSQsiQrzk9Bo7HU2oyBAJh7R',
+          authorizationParams: {
+            redirect_uri: window.location.origin
+          }
+        }),
       ],
       declarations: [
-        AppComponent
+        AppComponent,
+        HeaderComponent,
+        FooterComponent
       ],
     }).compileComponents();
   });
@@ -20,16 +35,10 @@ describe('AppComponent', () => {
     expect(app).toBeTruthy();
   });
 
-  it(`should have as title 'MacroPlei'`, () => {
+  it(`should have as title 'macroplei'`, () => {
     const fixture = TestBed.createComponent(AppComponent);
     const app = fixture.componentInstance;
-    expect(app.title).toEqual('MacroPlei');
+    expect(app.title).toEqual('macroplei');
   });
 
-  it('should render title', () => {
-    const fixture = TestBed.createComponent(AppComponent);
-    fixture.detectChanges();
-    const compiled = fixture.nativeElement as HTMLElement;
-    expect(compiled.querySelector('.content span')?.textContent).toContain('MacroPlei app is running!');
-  });
 });

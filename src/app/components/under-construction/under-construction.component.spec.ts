@@ -1,6 +1,9 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { UnderConstructionComponent } from './under-construction.component';
+import { RouterTestingModule } from '@angular/router/testing';
+import { HttpClientTestingModule } from '@angular/common/http/testing';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 describe('UnderConstructionComponent', () => {
   let component: UnderConstructionComponent;
@@ -8,6 +11,7 @@ describe('UnderConstructionComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
+      imports: [RouterTestingModule, HttpClientTestingModule, FormsModule, ReactiveFormsModule],
       declarations: [ UnderConstructionComponent ]
     })
     .compileComponents();

@@ -1,7 +1,11 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-
 import { ClientsComponent } from './clients.component';
+import { RouterTestingModule } from '@angular/router/testing';
+import { HttpClientTestingModule } from '@angular/common/http/testing';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { OrderListPipe } from '../../pipes/order-list.pipe';
 
 describe('ClientsComponent', () => {
   let component: ClientsComponent;
@@ -9,7 +13,8 @@ describe('ClientsComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ ClientsComponent ]
+      imports: [RouterTestingModule, HttpClientTestingModule, FormsModule, ReactiveFormsModule, FontAwesomeModule],
+      declarations: [ ClientsComponent, OrderListPipe]
     })
     .compileComponents();
 
@@ -21,4 +26,5 @@ describe('ClientsComponent', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
+
 });
