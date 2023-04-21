@@ -1,37 +1,4 @@
 <div class="album py-5 bg-light">
-  <!-- <div class="container">
-        <div class="input-group">
-            <form class="form-outline" action="/home/search" method="get">
-                <div class="d-flex">
-                    <div class="form-outline">
-                        <input 
-                            class="form-control" 
-                            id="search-input" 
-                            type="search" 
-                            name="search" 
-                            th:value="${search}"
-                            th:placeholder="Buscar"/> 
-                    </div>
-                    <div class="form-outline">
-                        <select class="form-select" name="filter" id="searchType">
-                        <option value="name">Nombre</option>
-                        <option value="category" th:if="${filter == 'category'}" selected >Categoría</option>
-                        <option value="category" th:unless="${filter == 'category'}">Categoría</option>
-                    </select> 
-                    </div>
-                    <button id="search-button" type="submit" class="btn btn-primary">
-                        <i class="fas fa-search"></i>
-                    </button>
-                </div>
-            </form>
-
-            <form action="/product/search">
-                <input type="text" placeholder="texto a buscar" name="text">
-                <button type="submit">buscar</button>
-            </form>
-        </div>
-    </div> -->
-
   <div class="container mt-5">
     <div class="row">
       <div class="col-md-4" *ngFor="let product of products">
@@ -88,7 +55,7 @@
               <div class="col-sm-8 d-flex justify-content-end">
                 <button
                   type="button"
-                  (click)="onSubmit(1, product.idProduct,quantityInput.value)"
+                  (click)="onSubmit(product.idProduct,quantityInput.value)"
                   class="btn btn-lg btn-outline-primary"
                 >
                   <span class="fs-5">
