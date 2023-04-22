@@ -13,6 +13,7 @@ import { FormClientsComponent } from './components/clients/form-clients/form-cli
 import { StoreComponent } from './components/store/store.component';
 import { SalesComponent } from './components/sales/sales.component';
 import { AuthGuard } from '@auth0/auth0-angular';
+import { SaleOrdersComponent } from './components/saleorders/saleorders.component';
 
 const routes: Routes = [
   {
@@ -56,6 +57,9 @@ const routes: Routes = [
   },
   {
     path: 'store', component: StoreComponent, canActivate: [AuthGuard]
+  },
+  {
+    path: 'sale-orders/:id', component: SaleOrdersComponent,
   },
   {
     path: 'store/add', component: StoreComponent,

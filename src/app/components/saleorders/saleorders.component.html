@@ -1,0 +1,213 @@
+<div class="container my-4">
+
+  <div class="row">
+
+    <form [formGroup]="saleOrderForm">
+      <div class="row">
+        <div class="col-md-6">
+          <div class="card-header">
+            <h2>Formulario de pago</h2>
+          </div>
+          <div class="card-body">
+
+            <div class="form-group mb-3">
+              <label for="cardType" class="col-form-label  fw-bold">Tipo de tarjeta</label>
+
+              <div class="col-sm-10">
+                <!--<input >  -->
+                <select class="form-select" aria-label="Default select example" name="cardType" id="cardType"
+                  formControlName="cardType">
+                  <option value="" disabled>--Seleccione--</option>
+                  <option value="1">Debito</option>
+                  <option value="2">Credito</option>
+                  <option value="3">Tarjeta prepago</option>
+                </select>
+                <!-- <div *ngIf="submittedSaleOrderForm && f['cardType'].errors" class="invalid-feedback">
+                  <div *ngIf="f['cardType'].errors['required']">Debes ingresar un tipo de tarjeta.</div>
+                </div> -->
+              </div>
+            </div>
+
+            <div class="form-group mb-3">
+              <label for="cardName" class="col-form-label  fw-bold">Nombre en la tarjeta</label>
+              <div class="col-sm-10">
+                <input placeholder="Nombre Apellido" type="text" class="form-control" name="cardName" id="cardName"
+                  formControlName="cardName">
+                <!-- <div *ngIf="submittedSaleOrderForm && f['cardName'].errors" class="invalid-feedback">
+                  <div *ngIf="f['cardName'].errors['required']">Debes ingresar el nombre del titular de la tarjeta.
+                  </div>
+                  <div *ngIf="f['cardName'].errors['minlength']">El nombre debe contener al menos 2 caracteres.</div>
+                  <div *ngIf="f['cardName'].errors['maxlength']">El nombre ingresado excede el tamaño máximo permitido
+                    (50)</div>
+                </div> -->
+              </div>
+            </div>
+
+            <div class="form-group mb-3">
+              <label for="cardNumber" class="col-form-label fw-bold">Numero frontal de la tarjeta</label>
+              <div class="col-sm-10">
+                <input placeholder="#### #### #### ####" type="number" class="form-control" name="cardNumber"
+                  id="cardNumber" formControlName="cardNumber">
+                <!-- <div *ngIf="submittedSaleOrderForm && f['cardNumber'].errors" class="invalid-feedback">
+                  <div *ngIf="f['cardNumber'].errors['required']">Debes ingresar el numero de la tarjeta.</div>
+                  <div *ngIf="f['cardNumber'].errors['minlength']">El numero ingresado debe contener al menos 16
+                    caracteres.</div>
+                  <div *ngIf="f['cardNumber'].errors['maxlength']">El numero ingresado excede el tamaño máximo permitido
+                    (19)</div>
+                </div> -->
+              </div>
+            </div>
+
+
+
+
+
+
+            <div class="form-group mb-3">
+              <label for="experationDate" class="col-form-label fw-bold">Fecha de expiracion de la
+                tarjeta</label>
+              <div class="col-sm-10">
+                <!--  <input type="date" class="form-control" name="experationDate" id="experationDate"
+                formControlName="experationDate"
+                [ngClass]="{'is-invalid' : submittedSaleOrderForm && f['experationDate'].errors}"> -->
+                <div>
+                  <label for="month"></label>
+                  <div class="flexbox">
+                    <div class="grupo-select">
+                      <select name="month" id="selectMonth">
+                        <option disabled selected>Mes</option>
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
+                        <option value="4">4</option>
+                        <option value="5">5</option>
+                        <option value="6">6</option>
+                        <option value="7">7</option>
+                        <option value="8">8</option>
+                        <option value="9">9</option>
+                        <option value="10">10</option>
+                        <option value="11">11</option>
+                        <option value="12">12</option>
+                      </select>
+                    </div>
+                    <div class="grupo-select">
+                      <select name="year" id="selectYear">
+                        <option disabled selected>Año</option>
+                        <option value="1">2023</option>
+                        <option value="2">2024</option>
+                        <option value="3">2025</option>
+                        <option value="4">2026</option>
+                        <option value="5">2027</option>
+                        <option value="6">2028</option>
+                        <option value="7">2029</option>
+                        <option value="8">2030</option>
+                      </select>
+                    </div>
+                  </div>
+                </div>
+                <!-- <div *ngIf="submittedSaleOrderForm && f['experationDate'].errors" class="invalid-feedback">
+                  <div *ngIf="f['experationDate'].errors['required']">Debes ingresar la fecha de expiracion de la
+                    tarjeta.
+                  </div>
+                </div> -->
+              </div>
+            </div>
+
+            <div class="form-group mb-3">
+              <label for="securityCode" class="col-form-label fw-bold">Numero trasero de la tarjeta</label>
+              <div class="col-sm-10">
+                <input placeholder="123" type="number" maxlength="3" class="form-control" name="securityCode"
+                  id="securityCode" formControlName="securityCode"
+                  oninput="if(this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);">
+                
+                <!-- <div *ngIf="submittedSaleOrderForm && f['securityCode'].errors" class="invalid-feedback">
+                  <div *ngIf="f['securityCode'].errors['required']">Debes ingresar el numero trasero de 3 digitos de tu
+                    tarjeta.</div>
+                </div> -->
+              </div>
+
+            </div>
+
+
+
+
+          </div>
+        </div>
+
+
+
+        <div class="col-md-6">
+          <div class="card-header">
+            <h2>Dirección de envío</h2>
+          </div>
+          <div class="card-body">
+
+            <div class="form-group mb-3">
+              <label for="country" class="col-form-label fw-bold">País de destino</label>
+              <div class="col-sm-10">
+                <input type="text" class="form-control" name="country" id="country" formControlName="country">
+                <!-- <div *ngIf="submittedSaleOrderForm && f['country'].errors" class="invalid-feedback">
+                  <div *ngIf="f['country'].errors['required']">Debes ingresar un país.</div>
+                </div> -->
+              </div>
+            </div>
+
+            <div class="form-group mb-3">
+              <label for="region" class="col-form-label fw-bold">Region de destino</label>
+              <div class="col-sm-10">
+                <input type="text" class="form-control" name="region" id="region" formControlName="region">
+                <!-- <div *ngIf="submittedSaleOrderForm && f['region'].errors" class="invalid-feedback">
+                  <div *ngIf="f['region'].errors['required']">Debes ingresar una region.</div>
+                </div> -->
+              </div>
+            </div>
+
+            <div class="form-group mb-3">
+              <label for="city" class="col-form-label fw-bold">Ciudad de destino</label>
+              <div class="col-sm-10">
+                <input type="text" class="form-control" name="city" id="city" formControlName="city">
+                <!-- <div *ngIf="submittedSaleOrderForm && f['city'].errors" class="invalid-feedback">
+                  <div *ngIf="f['city'].errors['required']">Debes ingresar una ciudad.</div>
+                </div> -->
+              </div>
+            </div>
+
+
+            <div class="form-group mb-3">
+              <label for="street" class="col-form-label fw-bold">Calle de destino</label>
+              <div class="col-sm-10">
+                <input type="text" class="form-control" name="street" id="street" formControlName="street">
+                <!-- <div *ngIf="submittedSaleOrderForm && f['street'].errors" class="invalid-feedback">
+                  <div *ngIf="f['street'].errors['required']">Debes ingresar una calle.</div>
+                </div> -->
+              </div>
+            </div>
+
+
+            <div class="form-group mb-3">
+              <label for="postalCode" class="col-form-label fw-bold">Codigo postal</label>
+              <div class="col-sm-10">
+                <input type="number" class="form-control" name="postalCode" id="postalCode"
+                  formControlName="postalCode">
+                <!-- <div *ngIf="submittedSaleOrderForm && f['postalCode'].errors" class="invalid-feedback">
+                  <div *ngIf="f['postalCode'].errors['required']">Debes ingresar un codigo postal.
+                  </div>
+                </div> -->
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>
+
+
+<div class="card-footer">
+  <div class="form-group row text-center">
+    <div class="col">
+      <button type="button" [routerLink]="['/sale-orders']" class="btn btn-lg btn-outline-primary m-2"> Volver</button>
+      <button type="button" (click)="onReset()" class="btn btn-lg btn-outline-primary m-2"> Limpiar</button>
+      <button type="button" (click)="onSubmit()" class="btn btn-success btn-block btn-lg">Finalizar pago</button>
+    </div>
+  </div>
