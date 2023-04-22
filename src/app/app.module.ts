@@ -25,7 +25,6 @@ import { FormClientsComponent } from './components/clients/form-clients/form-cli
 import { OrderListPipe } from './pipes/order-list.pipe';
 import { StoreComponent } from './components/store/store.component';
 import { AuthModule } from '@auth0/auth0-angular';
-
 import { SaleOrdersComponent } from './components/saleorders/saleorders.component';
 
 registerLocaleData(localeES,'es');
