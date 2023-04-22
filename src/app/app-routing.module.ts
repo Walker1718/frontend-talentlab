@@ -6,12 +6,14 @@ import { ClientsComponent } from './components/clients/clients.component';
 import { NosotrosComponent } from './components/nosotros/nosotros.component';
 import { Page404Component } from './components/page404/page404.component';
 import { ProductsComponent } from './components/products/products.component';
-import { FormProductsComponent } from './components/products/form-products/form-products.component';
+import { FormProductsComponent } from './components/products/form-products/form-products.component'; 
 import { CartComponent } from './components/cart/cart.component';
 import { CartItemsComponent } from './components/cart-items/cart-items.component';
 import { FormClientsComponent } from './components/clients/form-clients/form-clients.component';
 import { StoreComponent } from './components/store/store.component';
+import { SalesComponent } from './components/sales/sales.component';
 import { AuthGuard } from '@auth0/auth0-angular';
+import { SaleOrdersComponent } from './components/saleorders/saleorders.component';
 
 const routes: Routes = [
   {
@@ -57,7 +59,13 @@ const routes: Routes = [
     path: 'store', component: StoreComponent, canActivate: [AuthGuard]
   },
   {
+    path: 'sale-orders/:id', component: SaleOrdersComponent,
+  },
+  {
     path: 'store/add', component: StoreComponent,
+  },
+  {
+    path: 'sales', component: SalesComponent,
   },
   {
     path: '404', component: Page404Component,

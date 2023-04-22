@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { Observable, catchError, map, throwError } from 'rxjs';
 import { Router } from '@angular/router';
 
@@ -63,8 +63,9 @@ export class CartItemsService {
   }
   
   ///cart-items/{id}/edit"
-  updateCartItem(cartItem : CartItems) : Observable<any> {
-    return this.http.put(`${this.urlEndPoint}/${cartItem.idCartItem}/edit`,cartItem, { headers : this.httpHeaders }).pipe(
+  updateCartItem(idCartItem : number, quantity : number) : Observable<any> {
+    const params = new HttpParams().set('quantity', quantity)
+    return this.http.put(`${this.urlEndPoint}/${idCartItem}/edit?quantity=${quantity}`, { headers : this.httpHeaders}).pipe(
       catchError(e => {
         console.error(e.error.mensaje);
         Swal.fire(e.error.mensaje, e.error.error, 'error');
