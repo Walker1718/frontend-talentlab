@@ -1,64 +1,72 @@
 <div class="album py-5 bg-light">
-    <!-- <div class="container">
-        <div class="input-group">
-            <form class="form-outline" action="/home/search" method="get">
-                <div class="d-flex">
-                    <div class="form-outline">
-                        <input 
-                            class="form-control" 
-                            id="search-input" 
-                            type="search" 
-                            name="search" 
-                            th:value="${search}"
-                            th:placeholder="Buscar"/> 
-                    </div>
-                    <div class="form-outline">
-                        <select class="form-select" name="filter" id="searchType">
-                        <option value="name">Nombre</option>
-                        <option value="category" th:if="${filter == 'category'}" selected >Categoría</option>
-                        <option value="category" th:unless="${filter == 'category'}">Categoría</option>
-                    </select> 
-                    </div>
-                    <button id="search-button" type="submit" class="btn btn-primary">
-                        <i class="fas fa-search"></i>
-                    </button>
-                </div>
-            </form>
+  <div class="container mt-5">
+    <div class="row">
+      <div class="col-md-4" *ngFor="let product of products">
+        <div class="card mb-4 box-shadow">
+          <img
+            src="{{ product.image }}"
+            style="height: 325px; width: 100%; display: block"
+          />
+          <div class="card-body">
+            <p class="card-text">{{ product.name }}</p>
+            <p class="card-text">Categoría: {{ product.category }}</p>
+            <p class="card-text">Stock: {{ product.stock }}</p>
+            <p class="card-text">
+              <strong
+                >Valor:
+                {{
+                  product.price | currency : "CLP" : "symbol-narrow" : "1.0-0"
+                }}</strong
+              >
+            </p>
 
-            <form action="/product/search">
-                <input type="text" placeholder="texto a buscar" name="text">
-                <button type="submit">buscar</button>
-            </form>
-        </div>
-    </div> -->
-    
-    <div class="container mt-5">
-        <div class="row">
-            <div class="col-md-4" *ngFor="let product of products">
-                <div class="card mb-4 box-shadow">
-                    <img class="card-img-top"
-                        data-src="holder.js/100px225?theme=thumb&amp;bg=55595c&amp;fg=eceeef&amp;text=Thumbnail"
-                        alt="Thumbnail [100%x225]"
-                        style="height: 225px; width: 100%; display: block;"
-                        src="https://picsum.photos/200"
-                        data-holder-rendered="true">
-                    <div class="card-body">
-                        <p class="card-text" >{{product.idProduct}}</p>
-                        <p class="card-text" >{{product.name}}</p>
-                        <p class="card-text" >{{product.category}}</p>
-                        <p class="card-text" >{{product.stock}}</p>
-                        <div class="d-flex justify-content-between align-items-center">
+            <div class="d-flex justify-content-between">
+              <div class="col-md-4 d-flex justify-content-start">
+                <button
+                type="button"
+                class="btn btn-link px-2"
+                (click)="quantityInput.stepDown()"
+                >
+                    <fa-icon [icon]="faMinus"></fa-icon>
+                </button>
 
-                            <button [routerLink] ="['/store/add', product.idProduct]" class="btn btn-primary mb-1" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Editar">
-                                <span class ="fs-5">
-                                    <fa-icon [icon]="faCartPlus"></fa-icon>
-                                </span>
-                            </button>
-                            <small class="text-muted" >Valor: {{product.price | currency: 'CLP': 'symbol-narrow': '1.0-0'}} </small>
-                        </div>
-                    </div>
-                </div>
+                <input
+                  value="1"
+                  #quantityInput
+                  id="form1"
+                  min="1"
+                  max="{{ product.stock }}"
+                  name="quantity"
+                  type="number"
+                  readonly
+                  class="form-control form-control-sm"
+                />
+
+                <button
+                type="button"
+                class="btn btn-link px-2"
+                (click)="quantityInput.stepUp()"
+                >
+                <fa-icon [icon]="faPlus"></fa-icon>
+                </button>
+
+              </div>
+
+              <div class="col-sm-8 d-flex justify-content-end">
+                <button
+                  type="button"
+                  (click)="onSubmit(product.idProduct,quantityInput.value)"
+                  class="btn btn-lg btn-outline-primary"
+                >
+                  <span class="fs-5">
+                    Añadir al carro <fa-icon [icon]="faCartPlus"></fa-icon>
+                  </span>
+                </button>
+              </div>
             </div>
+          </div>
         </div>
+      </div>
     </div>
+  </div>
 </div>

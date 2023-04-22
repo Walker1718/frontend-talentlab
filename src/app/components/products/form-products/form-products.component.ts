@@ -4,7 +4,7 @@ import { AbstractControl, FormGroup, FormControl, FormBuilder, Validators } from
 import { ProductsService } from 'src/app/services/products.service';
 import { ActivatedRoute, Router } from '@angular/router';
 
-import Swal from 'sweetalert2';
+import Swal  from 'sweetalert2';
 
 @Component({
   selector: 'app-form-products',

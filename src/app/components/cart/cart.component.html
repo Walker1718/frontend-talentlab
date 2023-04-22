@@ -1,0 +1,86 @@
+<div class="container my-4 bg-dark text-white py-3 rounded">
+  <div class="row">
+    <div class="col-md-6">
+      <h1>{{ titulo }}</h1>
+      <p>{{ mensaje }}</p>
+    </div>
+  </div>
+</div>
+<div class="container my-4 bg-dark text-white py-3 rounded">
+  
+  <div class="card rounded-3 mb-4" *ngFor="let ci of cart.cart_items">
+      <div class="card-body p-4">
+        <div class="row d-flex justify-content-between align-items-center">
+          <div class="col-md-3 col-lg-2 col-xl-2">
+            <img src="{{ci.product.image}}"
+              class="img-fluid rounded-3" />
+          </div>
+          <div class="col-md-3 col-lg-3 col-xl-3">
+            <p class="lead fw-normal mb-2">{{ci.product.name}}</p>
+            <p>
+              <span class="text-muted">{{'Categoria: ' + ci.product.category}}</span>
+            </p>
+          </div>
+          <div class="col-md-2 d-flex justify-content-start">
+            <button
+            type="button"
+            class="btn btn-link px-2"
+            (click)="quantityInput.stepDown(); updateQuantity(ci.idCartItem, ci.quantity-1)"
+            *ngIf="(ci.quantity-1)>0"
+            >
+                <fa-icon [icon]="faMinus"></fa-icon>
+            </button>
+
+
+            <input
+              value="{{ci.quantity}}"
+              #quantityInput
+              id="form1"
+              min="1"
+              max="{{ ci.product.stock }}"
+              name="quantity"
+              type="number"
+              readonly
+              class="form-control form-control-sm"
+            />
+
+            <button
+            type="button"
+            class="btn btn-link px-2"
+            (click)="quantityInput.stepUp(); updateQuantity(ci.idCartItem, ci.quantity+1)"
+            *ngIf="(ci.quantity+1)<=ci.product.stock"
+            >
+            <fa-icon [icon]="faPlus"></fa-icon>
+            </button>
+
+          </div>
+          <div class="col-md-2 col-lg-2 col-xl-2 offset-lg-1">
+            <h5 class="mb-0">{{'$' + (ci.product.price * ci.quantity)}}</h5>
+          </div>
+          <div class="col-md-1 col-lg-1 col-xl-1 text-end">
+            <button
+            type="button"
+            class="btn btn-link px-2"
+            (click)="deleteCartItem(ci)"
+            >
+            <fa-icon [icon]="faDeleteProduct"></fa-icon>
+            </button>
+          </div>
+        </div>
+      </div>
+  </div>
+  <div class="card">
+    <div class="card-body">
+      <div class="row d-flex justify-content-between align-items-center">
+        <div class="col-md-3 col-lg-2 col-xl-2 offset-lg-1">
+          <h5 class="mb-0">Total: ${{cart.total}}</h5>
+        </div>
+        <div class="col-md-3 col-lg-2 col-xl-2 offset-lg-1">
+            <button [routerLink]="['/sale-orders',cart.idCart]" type="submit" class="btn btn-success btn-block btn-lg">
+              Ir a Pagar
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
