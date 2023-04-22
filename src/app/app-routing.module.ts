@@ -50,7 +50,7 @@ const routes: Routes = [
     path: 'store', component: StoreComponent,
   },
   {
-    path: 'sale-orders', component: SaleOrdersComponent,
+    path: 'sale-orders/:id', component: SaleOrdersComponent,
   },
   {
     path: 'store/add', component: StoreComponent,
