@@ -25,13 +25,15 @@
             <button
             type="button"
             class="btn btn-link px-2"
-            (click)="quantityInput.stepDown()"
+            (click)="quantityInput.stepDown(); updateQuantity(ci.idCartItem, ci.quantity-1)"
+            *ngIf="(ci.quantity-1)>0"
             >
                 <fa-icon [icon]="faMinus"></fa-icon>
             </button>
 
+
             <input
-              value="1"
+              value="{{ci.quantity}}"
               #quantityInput
               id="form1"
               min="1"
@@ -45,7 +47,8 @@
             <button
             type="button"
             class="btn btn-link px-2"
-            (click)="quantityInput.stepUp()"
+            (click)="quantityInput.stepUp(); updateQuantity(ci.idCartItem, ci.quantity+1)"
+            *ngIf="(ci.quantity+1)<=ci.product.stock"
             >
             <fa-icon [icon]="faPlus"></fa-icon>
             </button>
@@ -65,7 +68,6 @@
           </div>
         </div>
       </div>
-      <input name="id_cart_item" type="hidden" [value]="ci.idCartItem" />
   </div>
   <div class="card">
     <div class="card-body">

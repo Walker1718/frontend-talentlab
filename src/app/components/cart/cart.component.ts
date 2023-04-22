@@ -57,18 +57,19 @@ constructor(
  onSubmit() : void{
 
  }
- updateQuantity(cartItem: CartItems): void {
-  
-  this.cartItemsService.updateCartItem(cartItem).subscribe( 
+ updateQuantity(idCartItem: number, quantity : number): void {
+  console.log(idCartItem, quantity);
+  this.cartItemsService.updateCartItem(idCartItem, quantity).subscribe( 
     (data)=>{
-      this.router.navigate(['/cart']);
+      this.getCart(this.cart_id);
+      //this.router.navigate(['/cart']);
     }
   );
  }
  deleteCartItem(cartItem: CartItems):void{
   this.cartItemsService.deleteCartItem(cartItem.idCartItem).subscribe( 
     (data)=>{
-      this.router.navigate(['/cart']);
+      this.getCart(this.cart_id);      //this.router.navigate(['/cart']);
       Swal.fire('Producto eliminado del carrito','Eliminado','success');
     }
   );
