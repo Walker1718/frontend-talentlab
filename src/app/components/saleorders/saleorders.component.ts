@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { AbstractControl, FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { SalesService } from 'src/app/services/sales.service';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-sale-orders',
@@ -11,13 +13,15 @@ export class SaleOrdersComponent {
   titleCreate : string = "Formulario de pago";         
   saleOrderForm: FormGroup = new FormGroup({});
 
-  constructor(private formBuilder: FormBuilder) {
-    console.log("AppComponent::constructor");
+  constructor(
+    private formBuilder: FormBuilder,
+    private salesService: SalesService,
+    private route: ActivatedRoute
+  ) {
     this.createForm();
   }
 
   createForm() {
-    console.log("creando el formulario");
     this.saleOrderForm = this.formBuilder.group({
       cardType: ["", [Validators.required]],
       cardName: ["", [Validators.required]],
@@ -38,14 +42,18 @@ export class SaleOrdersComponent {
 
   onSubmit() {
     if (this.saleOrderForm.valid) {
-      console.log(this.saleOrderForm.value);
+      this.salesService.createSale(this.route.snapshot.params['id']).subscribe(
+        (data)=>{
+          console.log(data)
+          //this.router.navigate(['/cart']);
+        }
+      )
     } else {
       alert("ERROR!");
     }
   }
 
   onReset(): void {
-    // console.log("llegue aqui");
     this.saleOrderForm.reset();
   }
   

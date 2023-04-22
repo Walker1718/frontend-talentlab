@@ -28,7 +28,6 @@ constructor(
   private cartService: CartService, 
   private cartItemsService: CartItemsService,
   private clientsService: ClientsService,
-  private salesService: SalesService,
   public auth: AuthService,
   private router: Router,
 ) {}
@@ -56,15 +55,7 @@ constructor(
       }
     );
   }
-//  onSubmit() : void{
-//   this.salesService.createSale(this.cart_id).subscribe(
-//     (data)=>{
-//       this.sales_order(this.cart_id);
-//       //this.router.navigate(['/cart']);
-//     }
-//   )
 
- //}
  updateQuantity(idCartItem: number, quantity : number): void {
   console.log(idCartItem, quantity);
   this.cartItemsService.updateCartItem(idCartItem, quantity).subscribe( 

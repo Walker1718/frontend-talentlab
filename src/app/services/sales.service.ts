@@ -41,7 +41,7 @@ export class SalesService {
     );
   }
   createSale(id : number) : Observable<any> {
-    return this.http.post(`${this.urlEndPoint}/edit?cart_id=${id}`,  { headers : this.httpHeaders}).pipe(
+    return this.http.post(`${this.urlEndPoint}?cart_id=${id}`,  { headers : this.httpHeaders}).pipe(
       map((response: any) => response.sale as Sales),
       catchError(e => {
         console.error(e.error.mensaje);
