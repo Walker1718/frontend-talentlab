@@ -23,6 +23,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { FormClientsComponent } from './components/clients/form-clients/form-clients.component';
 import { OrderListPipe } from './pipes/order-list.pipe';
 import { StoreComponent } from './components/store/store.component';
+import { SaleOrdersComponent } from './components/saleorders/saleorders.component';
 
 registerLocaleData(localeES,'es');
 
@@ -42,7 +43,8 @@ registerLocaleData(localeES,'es');
     FormProductsComponent,
     FormClientsComponent,
     OrderListPipe,
-    StoreComponent
+    StoreComponent,
+    SaleOrdersComponent,
   ],
   imports: [
     BrowserModule,

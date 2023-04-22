@@ -9,6 +9,7 @@ import { ProductsComponent } from './components/products/products.component';
 import { FormProductsComponent } from './components/products/form-products/form-products.component';
 import { FormClientsComponent } from './components/clients/form-clients/form-clients.component';
 import { StoreComponent } from './components/store/store.component';
+import { SaleOrdersComponent } from './components/saleorders/saleorders.component';
 
 const routes: Routes = [
   {
@@ -47,6 +48,9 @@ const routes: Routes = [
   },
   {
     path: 'store', component: StoreComponent,
+  },
+  {
+    path: 'sale-orders', component: SaleOrdersComponent,
   },
   {
     path: 'store/add', component: StoreComponent,
