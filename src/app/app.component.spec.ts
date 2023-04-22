@@ -14,8 +14,8 @@ describe('AppComponent', () => {
         RouterTestingModule,
         HttpClientTestingModule,
         AuthModule.forRoot({
-          domain: 'christiansarmiento-facilita.us.auth0.com',
-          clientId: 'awv5Om11sSQsiQrzk9Bo7HU2oyBAJh7R',
+          domain: 'brant-ntt.us.auth0.com',
+          clientId: 'JXjwW7JwWaf06xYEDqIgzN2GQL1mkfkm',
           authorizationParams: {
             redirect_uri: window.location.origin
           }

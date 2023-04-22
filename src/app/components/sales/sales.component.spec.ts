@@ -4,6 +4,7 @@ import { SalesComponent } from './sales.component';
 import { RouterTestingModule } from '@angular/router/testing';
 import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { OrderListPipe } from '../../pipes/order-list.pipe';
 
 describe('SalesComponent', () => {
   let component: SalesComponent;
@@ -12,7 +13,7 @@ describe('SalesComponent', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       imports: [RouterTestingModule, HttpClientTestingModule, FormsModule, ReactiveFormsModule],
-      declarations: [ SalesComponent ]
+      declarations: [ SalesComponent, OrderListPipe ]
     })
     .compileComponents();
 
