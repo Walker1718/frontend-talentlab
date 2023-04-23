@@ -1,31 +1,58 @@
 <div class="container my-4 bg-dark text-white py-3 rounded">
-    <div class="row">
-        <div class="col-md-6">
-            <h1>{{ titulo }}</h1>
-            <p>{{ mensaje }}</p>
-        </div>
+  <div class="row">
+    <div class="col-md-6">
+      <h1>{{ titulo }}</h1>
+      <p>{{ mensaje }}</p>
     </div>
+  </div>
 </div>
-        <div  class="container my-4">
-            <div class="table-responsive">
-                <table class="table table-bordered table-hover">
-                    <thead class="table-dark">
-                        <tr class="text-center">
-                            <th (click)="orderListSales('idSales')">ID</th>
-                            <th (click)="orderListSales('client')">Cliente</th>
-                            <th (click)="orderListSales('cart')">Carrito</th>
-                            <th (click)="orderListSales('total')">Total</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr *ngFor="let sale of sales | orderList : optionSort.property : optionSort.order">
-                            <td class="text-center">{{sale.idSale}}</td>
-                            <td class="text-end">{{sale.client.email}}</td>
-                            <td>{{sale.cart.idCart}}</td>
-                            <td>{{sale.total | currency: 'CLP': 'symbol-narrow': '1.0-0'}}</td>
-                        </tr>
-                    </tbody>
-                </table>
-         
-        
-        <!--  | orderList : optionSort.property : optionSort.order -->
+<div class="container my-4">
+  <div class="table-responsive">
+    <table class="table table-bordered table-hover">
+      <thead class="table-dark">
+        <tr class="text-center">
+          <th (click)="orderListSales('idSales')">ID</th>
+          <th (click)="orderListSales('client')">Cliente</th>
+          <th (click)="orderListSales('cart')">Carrito</th>
+          <th (click)="orderListSales('total')">Total</th>
+          <th>Visualizar</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr
+          *ngFor="
+            let sale of sales
+              | orderList : optionSort.property : optionSort.order
+          "
+        >
+          <td class="text-center">{{ sale.idSale }}</td>
+          <td class="text-end">{{ sale.client.email }}</td>
+          <td>{{ sale.cart.idCart }}</td>
+          <td>
+            {{ sale.total | currency : "CLP" : "symbol-narrow" : "1.0-0" }}
+          </td>
+          <td>
+            <div class="row">
+              <div class="col-md-12 text-center">
+                <button
+                  [routerLink]="['/sales', sale.idSale]"
+                  [queryParams]="{ admin: true }"
+                  class="btn btn-primary mb-1"
+                  data-bs-toggle="tooltip"
+                  data-bs-placement="bottom"
+                  title="Resumen"
+                >
+                  <span class="fs-5">
+                    <fa-icon [icon]="faEye"></fa-icon>
+                  </span>
+                </button>
+              </div>
+            </div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+
+    <!--  | orderList : optionSort.property : optionSort.order -->
+  </div>
+</div>

@@ -82,24 +82,24 @@
           <h5 class="mb-0">Tu carrito esta vacío, añade productos en la tienda!</h5> 
         </div>
         
-        <div *ngIf="cart.total > 0" class="col-md-6 col-lg-2 col-xl-2 offset-lg-1">
+        <div class="col-md-3 offset-lg-1">
           <button 
+            [routerLink]="['/store']"
+            type="submit"
+            class="btn btn-primary btn-block btn-lg mx-1"
+          >
+            Ir a la Tienda
+          </button>
+          <button 
+            *ngIf="cart.total > 0"
             [routerLink]="['/sale-orders', cart.idCart]"
             type="submit"
-            class="btn btn-success btn-block btn-lg"
+            class="btn btn-success btn-block btn-lg mx-1"
           >
             Ir a Pagar
           </button>
         </div>
-        <div *ngIf="cart.total == 0" class="col-md-6 col-lg-2 col-xl-2 offset-lg-1">
-          <button 
-            [routerLink]="['/store']"
-            type="submit"
-            class="btn btn-primary btn-block btn-lg"
-          >
-            Ir a la Tienda
-          </button>
-        </div>
+
       </div>
     </div>
   </div>

@@ -1,0 +1,70 @@
+<div class="container my-4 bg-dark text-white py-3 rounded">
+  <div class="row">
+    <div class="col-md-6">
+      <h1>Resumen de la compra</h1>
+    </div>
+  </div>
+</div>
+<div class="container my-4">
+  <div class="table-responsive">
+    <table class="table table-bordered table-striped mt-4">
+      <thead class="table-dark">
+        <tr>
+          <th>ID</th>
+          <th>Nombre</th>
+          <th>Categoria</th>
+          <th>Cantidad</th>
+          <th>Precio</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let p of sale.cart.cart_items">
+          <td>{{ p.product.idProduct }}</td>
+          <td>{{ p.product.name }}</td>
+          <td>{{ p.product.category }}</td>
+          <td>{{ p.quantity }}</td>
+          <td>{{ p.product.price | currency : "CLP" : "symbol-narrow" : "1.0-0" }}</td>
+        </tr>
+      </tbody>
+      <tfoot>
+        
+        <tr>
+          <td class="text-end" colspan="4">Total:</td>
+          <td>{{ sale.cart.total | currency : "CLP" : "symbol-narrow" : "1.0-0" }}</td>
+        </tr>
+      </tfoot>
+    </table>
+  </div>
+</div>
+
+<div class="container">
+  <div class="row">
+    <div class="col-md-6">
+      <button
+        *ngIf="isAdmin"
+        [routerLink]="['/sales']"
+        type="submit"
+        class="btn btn-outline-primary btn-lg m-3"
+      >
+        Volver a la Lista
+      </button>
+      <button
+        *ngIf="!isAdmin"
+        [routerLink]="['/store']"
+        type="submit"
+        class="btn btn-primary btn-lg m-3"
+      >
+        Ir a la Tienda
+      </button>
+    </div>
+    <div class="col-md-6 text-end">
+      <button
+        (click)="onSubmit()"
+        type="submit"
+        class="btn btn-primary btn-lg m-3"
+      >
+        Descargar PDF
+      </button>
+    </div>
+  </div>
+</div>

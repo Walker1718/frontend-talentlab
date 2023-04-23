@@ -74,7 +74,7 @@
                   <label for="month"></label>
                   <div class="flexbox">
                     <div class="grupo-select">
-                      <select name="month" id="selectMonth">
+                      <select name="month" id="expirationYear" formControlName="expirationYear">
                         <option disabled selected>Mes</option>
                         <option value="1">1</option>
                         <option value="2">2</option>
@@ -91,7 +91,7 @@
                       </select>
                     </div>
                     <div class="grupo-select">
-                      <select name="year" id="selectYear">
+                      <select name="year" id="expirationMonth" formControlName="expirationMonth">
                         <option disabled selected>Año</option>
                         <option value="1">2023</option>
                         <option value="2">2024</option>
@@ -206,7 +206,7 @@
 <div class="card-footer">
   <div class="form-group row text-center">
     <div class="col">
-      <button type="button" [routerLink]="['/sale-orders']" class="btn btn-lg btn-outline-primary m-2"> Volver</button>
+      <button type="button" [routerLink]="['/cart']" class="btn btn-lg btn-outline-primary m-2"> Volver</button>
       <button type="button" (click)="onReset()" class="btn btn-lg btn-outline-primary m-2"> Limpiar</button>
       <button type="button" (click)="onSubmit()" class="btn btn-success btn-block btn-lg">Finalizar pago</button>
     </div>

@@ -27,6 +27,7 @@ import { StoreComponent } from './components/store/store.component';
 import { AuthModule } from '@auth0/auth0-angular';
 
 import { SaleOrdersComponent } from './components/saleorders/saleorders.component';
+import { SaleComponent } from './components/sales/sale/sale.component';
 
 registerLocaleData(localeES,'es');
 
@@ -51,6 +52,7 @@ registerLocaleData(localeES,'es');
     OrderListPipe,
     StoreComponent,
     SaleOrdersComponent,
+    SaleComponent,
 
   ],
   imports: [
