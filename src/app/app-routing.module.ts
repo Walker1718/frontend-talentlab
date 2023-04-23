@@ -14,6 +14,7 @@ import { StoreComponent } from './components/store/store.component';
 import { SalesComponent } from './components/sales/sales.component';
 import { AuthGuard } from '@auth0/auth0-angular';
 import { SaleOrdersComponent } from './components/saleorders/saleorders.component';
+import { SaleComponent } from './components/sales/sale/sale.component';
 
 const routes: Routes = [
   {
@@ -66,6 +67,9 @@ const routes: Routes = [
   },
   {
     path: 'sales', component: SalesComponent,
+  },
+  {
+    path: 'sales/:id', component: SaleComponent,
   },
   {
     path: '404', component: Page404Component,

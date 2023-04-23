@@ -1,6 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { Sales } from 'src/app/services/sales';
 import { SalesService } from 'src/app/services/sales.service';
+import { faEye } from '@fortawesome/free-solid-svg-icons';
 @Component({
   selector: 'app-sales',
   templateUrl: './sales.component.html',
@@ -10,7 +11,7 @@ export class SalesComponent implements OnInit {
   @Input() sales : Sales[] = [];
   @Input() mensaje: string = '';
   titulo : string = 'Lista de Ventas';
-
+  faEye = faEye;
   optionSort: { property: string | null, order : string } = { property : null, order : 'asc' };
 
 
