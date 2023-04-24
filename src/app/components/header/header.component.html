@@ -1,57 +1,55 @@
-<nav class="navbar navbar-expand-lg navbar-dark bg-light">
+<nav class="navbar sticky-top navbar-expand-lg navbar-dark bg-light">
     <div class="container-fluid">
         <a class="navbar-brand" routerLink="home">
-            <img width="200" height="200" class="d-inline-block mx-5" src="../../../assets/img/2.svg" alt="">
+            <img width="200" height="200" class="d-inline-block" src="../../../assets/img/2.svg" alt="">
         </a>
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <button class="navbar-toggler bg-secondary" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
-        <div class="collapse navbar-collapse " id="navbarSupportedContent">
-            <ul class="navbar-nav ">
-                <li class="nav-item " routerLinkActive="active">
-                    <a class="nav-link d-inline-block" routerLink="home">Home</a>
+        <div class="collapse navbar-collapse bg-light" id="navbarSupportedContent">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                <li *ngIf="isAuthenticated" class="nav-item" routerLinkActive="active">
+                    <a class="nav-link d-inline p-2 m-4" routerLink="store">Tienda</a>
                 </li>
                 <li *ngIf="isAuthenticated" class="nav-item" routerLinkActive="active">
-                    <a class="nav-link d-inline-block" routerLink="store">Tienda</a>
+                    <a class="nav-link d-inline p-2 m-4" routerLink="clients">Usuarios</a>
                 </li>
                 <li *ngIf="isAuthenticated" class="nav-item" routerLinkActive="active">
-                    <a class="nav-link d-inline-block" routerLink="clients">Lista de usuarios</a>
+                    <a class="nav-link d-inline p-2 m-4" routerLink="products">Productos</a>
                 </li>
                 <li *ngIf="isAuthenticated" class="nav-item" routerLinkActive="active">
-                    <a class="nav-link d-inline-block" routerLink="products">Lista de productos</a>
-                </li>
-                <li *ngIf="isAuthenticated" class="nav-item" routerLinkActive="active">
-                    <a class="nav-link" routerLink="sales">Ventas</a>
+                    <a class="nav-link d-inline p-2 m-4" routerLink="sales">Ventas</a>
                 </li>
                 <li class="nav-item" routerLinkActive="active">
-                    <a class="nav-link d-inline-block" routerLink="nosotros">Nosotros</a>
+                    <a class="nav-link d-inline p-2 m-4" routerLink="nosotros">Nosotros</a>
                 </li>
                 <li *ngIf="isAuthenticated" class="nav-item" routerLinkActive="active">
-                    <a class="nav-link d-inline-block" routerLink="cart">Cart</a>
+                    <a class="nav-link d-inline p-2 m-4" routerLink="cart">Cart</a>
                 </li>
             </ul>
+            <div class="clock d-flex ">
+                <span *ngIf="!isAuthenticated">
+                    La hora es {{currentTime$ | async | date:'hh:mm:ss a'}}
+                </span>
+                <span *ngIf="isAuthenticated && user">
+                    Hola {{ user.name }}! La hora es {{currentTime$ | async | date:'hh:mm:ss a'}}
+                </span>
+            </div>
+            <div class="mx-2 align-self-start">
+                <ul class="navbar-nav d-flex ms-auto">
+                    <li class="nav-item">
+                        <a class="btn btn-outline-success m-2" (click)="login()" *ngIf="!isAuthenticated">Login</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="btn btn-outline-primary m-2" [routerLink]="['/profile']" *ngIf="isAuthenticated">Perfil</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="btn btn-outline-warning m-2" (click)="logout()" *ngIf="isAuthenticated">Logout</a>
+                    </li>
+                    
+                </ul>
+            </div>
         </div>
-        <div class="clock d-flex">
-            <span *ngIf="!isAuthenticated">
-                La hora es {{currentTime$ | async | date:'hh:mm:ss a'}}
-            </span>
-            <span *ngIf="isAuthenticated && user">
-                Hola {{ user.name }}! La hora es {{currentTime$ | async | date:'hh:mm:ss a'}}
-            </span>
-        </div>
-        <div class="mx-5">
-            <ul class="navbar-nav d-flex ms-auto">
-                <li class="nav-item">
-                    <a class="btn btn-outline-success m-2" (click)="login()" *ngIf="!isAuthenticated">Login</a>
-                </li>
-                <li class="nav-item">
-                    <a class="btn btn-outline-primary m-2" [routerLink]="['/profile']" *ngIf="isAuthenticated">Perfil</a>
-                </li>
-                <li class="nav-item">
-                    <a class="btn btn-outline-warning m-2" (click)="logout()" *ngIf="isAuthenticated">Logout</a>
-                </li>
-                
-            </ul>
-        </div>
+        
     </div>
 </nav>

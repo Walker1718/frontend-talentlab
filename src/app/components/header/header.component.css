@@ -1,15 +1,13 @@
-.img-nav {
-    width: 250px;
-    height: 250px;
-    padding-left: 50px;
-}
-.navbar{
-    height: 150px;
+.d-inline-block{
+    width: 150px;
+    height: 80px;
+    align-items: start;
 }
 .nav-link{
-    color: #6c757d;
+    color: #585858;
     width: 100px;
     height: 100px;
+    text-align: center;
 }
 
 .clock{
