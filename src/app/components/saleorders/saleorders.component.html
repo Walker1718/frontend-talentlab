@@ -16,7 +16,7 @@
               <div class="col-sm-10">
                 <!--<input >  -->
                 <select class="form-select" aria-label="Default select example" name="cardType" id="cardType"
-                  formControlName="cardType" [ngClass]="{'is-invalid' : onSubmit && f['cardType'].errors}">
+                  formControlName="cardType" [ngClass]="{'is-invalid' : Enviar && f['cardType'].errors}">
                   <option value="" disabled>--Seleccione--</option>
                   <option value="1">Debito</option>
                   <option value="2">Credito</option>
@@ -29,7 +29,7 @@
               <label for="cardName" class="col-form-label  fw-bold">Nombre en la tarjeta</label>
               <div class="col-sm-10">
                 <input placeholder="Nombre Apellido" type="text" class="form-control" name="cardName" id="cardName"
-                  formControlName="cardName" [ngClass]="{'is-invalid' : onSubmit && f['cardName'].errors}">
+                  formControlName="cardName" [ngClass]="{'is-invalid' : Enviar && f['cardName'].errors}">
                 
               </div>
             </div>
@@ -38,7 +38,7 @@
               <label for="cardNumber" class="col-form-label fw-bold">Numero frontal de la tarjeta</label>
               <div class="col-sm-10">
                 <input placeholder="#### #### #### ####" type="number" maxlength="16" class="form-control" name="cardNumber"
-                  id="cardNumber" formControlName="cardNumber" oninput="if(this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);" [ngClass]="{'is-invalid' : onSubmit && f['cardNumber'].errors}">
+                  id="cardNumber" formControlName="cardNumber" oninput="if(this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);" [ngClass]="{'is-invalid' : Enviar && f['cardNumber'].errors}">
                 
               </div>
             </div>
@@ -90,7 +90,7 @@
               <div class="col-sm-10">
                 <input placeholder="123" type="number" maxlength="3" class="form-control" name="securityCode"
                   id="securityCode" formControlName="securityCode"
-                  oninput="if(this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);" [ngClass]="{'is-invalid' : onSubmit && f['securityCode'].errors}">
+                  oninput="if(this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);" [ngClass]="{'is-invalid' : Enviar && f['securityCode'].errors}">
                 
               </div>
 
@@ -113,7 +113,7 @@
             <div class="form-group mb-3">
               <label for="country" class="col-form-label fw-bold">País de destino</label>
               <div class="col-sm-10">
-                <input type="text" class="form-control" name="country" id="country" formControlName="country" [ngClass]="{'is-invalid' : onSubmit && f['country'].errors}">
+                <input type="text" class="form-control" name="country" id="country" formControlName="country" [ngClass]="{'is-invalid' : Enviar && f['country'].errors}">
                 
               </div>
             </div>
@@ -121,7 +121,7 @@
             <div class="form-group mb-3">
               <label for="region" class="col-form-label fw-bold">Region de destino</label>
               <div class="col-sm-10">
-                <input type="text" class="form-control" name="region" id="region" formControlName="region" [ngClass]="{'is-invalid' : onSubmit && f['region'].errors}">
+                <input type="text" class="form-control" name="region" id="region" formControlName="region" [ngClass]="{'is-invalid' : Enviar && f['region'].errors}">
                 
               </div>
             </div>
@@ -129,7 +129,7 @@
             <div class="form-group mb-3">
               <label for="city" class="col-form-label fw-bold" for="validationTooltip03">Ciudad de destino</label>
               <div class="col-sm-10">
-                <input type="text" class="form-control" name="city" id="city" id="validationTooltip03" formControlName="city" [ngClass]="{'is-invalid' : onSubmit && f['city'].errors}">
+                <input type="text" class="form-control" name="city" id="city" id="validationTooltip03" formControlName="city" [ngClass]="{'is-invalid' : Enviar && f['city'].errors}">
                 
               </div>
             </div>
@@ -138,7 +138,7 @@
             <div class="form-group mb-3">
               <label for="street" class="col-form-label fw-bold">Calle de destino</label>
               <div class="col-sm-10">
-                <input type="text" class="form-control" name="street" id="street" formControlName="street" [ngClass]="{'is-invalid' : onSubmit && f['street'].errors}">
+                <input type="text" class="form-control" name="street" id="street" formControlName="street" [ngClass]="{'is-invalid' : Enviar && f['street'].errors}">
                 
               </div>
             </div>
@@ -148,7 +148,7 @@
               <label for="postalCode" class="col-form-label fw-bold">Codigo postal</label>
               <div class="col-sm-10">
                 <input type="number" class="form-control" name="postalCode" id="postalCode"
-                  formControlName="postalCode" [ngClass]="{'is-invalid' : onSubmit && f['postalCode'].errors}">
+                  formControlName="postalCode" [ngClass]="{'is-invalid' : Enviar && f['postalCode'].errors}">
                 
               </div>
             </div>
@@ -164,8 +164,8 @@
   <div class="form-group row text-center">
     <div class="col">
       <button type="button" [routerLink]="['/home']" class="btn btn-lg btn-outline-primary m-2"> Volver</button>
-      <button type="button" (click)="onReset()" class="btn btn-lg btn-outline-primary m-2"> Limpiar</button>
-      <button type="button" (click)="onSubmit()" class="btn btn-success btn-block btn-lg">Finalizar pago</button>
+      <button type="button" (Enviar)="onReset()" class="btn btn-lg btn-outline-primary m-2"> Limpiar</button>
+      <button type="button" (Enviar)="onSubmit()" class="btn btn-success btn-block btn-lg">Finalizar pago</button>
     </div>
   </div>
   </div>

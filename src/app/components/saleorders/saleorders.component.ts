@@ -14,6 +14,8 @@ export class SaleOrdersComponent {
   titleCreate: string = "Formulario de pago";
   saleOrderForm: FormGroup = new FormGroup({});
 
+  Enviar = false;
+
   constructor(
     private formBuilder: FormBuilder,
     private salesService: SalesService,
@@ -50,12 +52,14 @@ export class SaleOrdersComponent {
 
   onSubmit() {
     if (this.saleOrderForm.valid) {
+      
       this.salesService.createSale(this.route.snapshot.params['id']).subscribe(
         (data) => {
           this.router.navigate([`/sales/${data.idSale}`]);
         }
       )
     } else {
+      this.Enviar = true;
       Swal.fire({
         icon: 'error',
         title: 'Error en el formulario',
