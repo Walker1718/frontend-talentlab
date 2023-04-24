@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { Observable, catchError, map, throwError } from 'rxjs';
 import { Router } from '@angular/router';
 
@@ -42,6 +42,23 @@ export class ProductsService {
         });
       })
     );
+  }
+
+  searchProducts(search: String, filter: String): Observable<any> {
+    const params = new HttpParams()
+    .set('search', search.toString())
+    .set('filter', filter.toString());
+    return this.http.get(`${this.urlEndPoint}/search`, { params } ).pipe(
+      catchError(e => {
+        this.router.navigate([`/store`]);
+        console.error(e.error.mensaje);
+        Swal.fire(e.error.mensaje, e.error.error, 'error');
+        return throwError(() => {
+          const error: any = new Error(e.error.mensaje);
+          return error;
+        });
+      })
+    )
   }
 
   createProduct(product: Products) : Observable<any> {
