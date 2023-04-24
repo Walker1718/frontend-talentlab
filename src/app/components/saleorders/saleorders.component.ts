@@ -58,8 +58,8 @@ export class SaleOrdersComponent {
     } else {
       Swal.fire({
         icon: 'error',
-        title: 'Oops...',
-        text: 'Algo ha salido mal'
+        title: 'Error en el formulario',
+        text: 'Por favor, revise todos los campos.'
       })
     }
   }
