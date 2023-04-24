@@ -14,7 +14,7 @@ export class SaleOrdersComponent {
   titleCreate: string = "Formulario de pago";
   saleOrderForm: FormGroup = new FormGroup({});
 
-  Enviar = false;
+  bandera = false;
 
   constructor(
     private formBuilder: FormBuilder,
@@ -59,7 +59,7 @@ export class SaleOrdersComponent {
         }
       )
     } else {
-      this.Enviar = true;
+      this.bandera = true;
       Swal.fire({
         icon: 'error',
         title: 'Error en el formulario',
@@ -69,6 +69,7 @@ export class SaleOrdersComponent {
   }
 
   onReset(): void {
+    this.bandera = false;
     this.saleOrderForm.reset();
   }
 
