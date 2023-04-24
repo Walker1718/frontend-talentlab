@@ -1,5 +1,5 @@
 import { Component, Input, OnDestroy, OnInit } from '@angular/core';
-import { faTriangleExclamation, faPenSquare, faTrashCan, faRectangleAd, faCartPlus,faMinus,faPlus} from '@fortawesome/free-solid-svg-icons';
+import { faTriangleExclamation, faPenSquare, faTrashCan, faRectangleAd, faCartPlus,faMinus,faPlus, faSearch, faRefresh} from '@fortawesome/free-solid-svg-icons';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Products } from 'src/app/services/products';
 import { ProductsService } from 'src/app/services/products.service';
@@ -21,6 +21,8 @@ export class StoreComponent implements OnInit {
   @Input() mensaje: string = '';
   @Input() cartItem : CartItems = new CartItems;
   titulo : string = 'Productos';
+  search: String = '';
+  filter: String = 'name';
   faExclamation = faTriangleExclamation;
   faEditProduct = faPenSquare;
   faDeleteProduct = faTrashCan;
@@ -28,6 +30,8 @@ export class StoreComponent implements OnInit {
   faCartPlus = faCartPlus;
   faPlus = faPlus;
   faMinus = faMinus;
+  faSearch = faSearch;
+  faRefresh = faRefresh;
   cart_id: number = 0;
 
 
@@ -59,6 +63,24 @@ export class StoreComponent implements OnInit {
       (data) => {
         this.products = data.products;
         this.mensaje = data.mensaje;
+      }
+    );
+  }
+
+  searchProducts(search: String, filter: String): void {
+    this.productService.searchProducts(search, filter).subscribe(
+      (data) => {
+        this.products = data.products;
+        //this.mensaje = data.mensaje;
+      }
+    );
+  }
+
+  refreshSearch(): void {
+    this.productService.getProducts().subscribe(
+      (data) => {
+        this.products = data.products;
+        this.search = '';
       }
     );
   }
