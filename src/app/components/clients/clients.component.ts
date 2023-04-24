@@ -20,6 +20,8 @@ export class ClientsComponent implements OnInit{
   faDeletePerson = faTrashCan;
   faAddPerson = faUserPlus;
 
+  p: number = 1;
+
   optionSort: { property: string | null, order : string } = { property : null, order : 'asc' };
 
   constructor(private clientsService: ClientsService) {}
