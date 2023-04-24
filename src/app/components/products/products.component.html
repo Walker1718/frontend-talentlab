@@ -16,7 +16,7 @@
 
 <div *ngIf="products.length > 0; else NoHayProductos" class="container my-4">
     <div class="table-responsive">
-        <table class="table table-bordered table-hover">
+        <table id="tableproducts" class="table table-striped table-bordered" style="width:100%">
             <thead class="table-dark">
                 <tr class="text-center">
                     <th (click)="orderListProducts('idProduct')">ID</th>
@@ -28,7 +28,7 @@
                 </tr>
             </thead>
             <tbody>
-                <tr *ngFor="let product of products | orderList : optionSort.property : optionSort.order">
+                <tr *ngFor="let product of products | orderList : optionSort.property : optionSort.order | paginate: { itemsPerPage: 3, currentPage: p }  ">
                     <td class="text-center">{{product.idProduct}}</td>
                     <td class="text-end">{{product.name}}</td>
                     <td class="text-end">{{product.price | currency: 'CLP': 'symbol-narrow': '1.0-0'}}</td>
@@ -53,6 +53,9 @@
                 </tr>
             </tbody>
         </table>
+
+        <pagination-controls (pageChange)="p = $event"></pagination-controls>
+
     </div>
 </div>
 
