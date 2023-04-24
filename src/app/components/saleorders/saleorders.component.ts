@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { AbstractControl, FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { SalesService } from 'src/app/services/sales.service';
 import { ActivatedRoute, Router } from '@angular/router';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-sale-orders',
@@ -10,7 +11,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 })
 export class SaleOrdersComponent {
 
-  titleCreate : string = "Formulario de pago";         
+  titleCreate: string = "Formulario de pago";
   saleOrderForm: FormGroup = new FormGroup({});
 
   constructor(
@@ -25,7 +26,7 @@ export class SaleOrdersComponent {
   createForm() {
     this.saleOrderForm = this.formBuilder.group({
       cardType: ["", [Validators.required]],
-      cardName: ["", [Validators.required]],
+      cardName: ["", [Validators.required, Validators.minLength(2), Validators.maxLength(50)]],
       cardNumber: ["", [Validators.required, Validators.minLength(16), Validators.maxLength(19)]],
       securityCode: ["", [Validators.required, Validators.minLength(3)]],
       // TODO validar estos campos
@@ -43,28 +44,30 @@ export class SaleOrdersComponent {
     });
   }
 
+  get f(): { [key: string]: AbstractControl } {
+    return this.saleOrderForm.controls;
+  }
+
   onSubmit() {
     if (this.saleOrderForm.valid) {
       this.salesService.createSale(this.route.snapshot.params['id']).subscribe(
-        (data)=>{
+        (data) => {
           this.router.navigate([`/sales/${data.idSale}`]);
         }
       )
     } else {
-      alert("ERROR!");
-      const controls = this.saleOrderForm.controls;
-      for (const key in controls) {
-        if (controls[key].errors) {
-          console.log(`El campo ${key} está fallando por: ${JSON.stringify(controls[key].errors)}`);
-        }
-      }
+      Swal.fire({
+        icon: 'error',
+        title: 'Oops...',
+        text: 'Algo ha salido mal'
+      })
     }
   }
 
   onReset(): void {
     this.saleOrderForm.reset();
   }
-  
+
 }
 
 
