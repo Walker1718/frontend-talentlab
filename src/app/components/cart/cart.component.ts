@@ -65,13 +65,44 @@ constructor(
     }
   );
  }
- deleteCartItem(cartItem: CartItems):void{
-  this.cartItemsService.deleteCartItem(cartItem.idCartItem).subscribe( 
-    (data)=>{
-      this.getCart(this.cart_id);      //this.router.navigate(['/cart']);
-      Swal.fire('Producto eliminado del carrito','Eliminado','success');
+ deleteCartItem(cartItem: CartItems):void{ 
+  
+  const swalWithBootstrapButtons = Swal.mixin({
+    customClass: {
+      confirmButton: 'btn btn-success m-2',
+      cancelButton: 'btn btn-danger m-2'
+    },
+    buttonsStyling: false
+  })
+    
+  swalWithBootstrapButtons.fire({
+    title: 'Estás seguro?',
+    text: `Deseas eliminar el producto? Esta acción no se puede revertir`,
+    icon: 'warning',
+    showCancelButton: true,
+    confirmButtonText: 'Si, eliminar!',
+    cancelButtonText: 'No!!',
+    reverseButtons: true
+  }).then((result) => {
+    if (result.isConfirmed) {
+      this.cartItemsService.deleteCartItem(cartItem.idCartItem).subscribe( 
+        (data)=>{
+          this.getCart(this.cart_id);      //this.router.navigate(['/cart']);
+          Swal.fire('Producto eliminado del carrito','Eliminado','success');
+        }
+      )
+      
+    } else if (
+      /* Read more about handling dismissals below */
+      result.dismiss === Swal.DismissReason.cancel
+    ) {
+      swalWithBootstrapButtons.fire(
+        'Acción cancelada',
+        'El cielo es de los arrepentidos',
+        'error'
+      )
     }
-  );
+  })
 
  }
 
