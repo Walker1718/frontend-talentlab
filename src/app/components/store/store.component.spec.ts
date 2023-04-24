@@ -5,6 +5,7 @@ import { RouterTestingModule } from '@angular/router/testing';
 import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AuthModule, AuthService } from '@auth0/auth0-angular';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 
 describe('StoreComponent', () => {
   let component: StoreComponent;
@@ -17,6 +18,7 @@ describe('StoreComponent', () => {
         HttpClientTestingModule, 
         FormsModule, 
         ReactiveFormsModule,
+        FontAwesomeModule,
         AuthModule.forRoot({
           domain: 'brant-ntt.us.auth0.com',
           clientId: 'JXjwW7JwWaf06xYEDqIgzN2GQL1mkfkm',
