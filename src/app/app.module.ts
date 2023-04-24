@@ -27,6 +27,7 @@ import { StoreComponent } from './components/store/store.component';
 import { AuthModule } from '@auth0/auth0-angular';
 import { SaleOrdersComponent } from './components/saleorders/saleorders.component';
 import { SaleComponent } from './components/sales/sale/sale.component';
+import { NgxPaginationModule } from 'ngx-pagination';
 
 registerLocaleData(localeES,'es');
 
@@ -61,6 +62,7 @@ registerLocaleData(localeES,'es');
     FontAwesomeModule,
     FormsModule,
     ReactiveFormsModule,
+    NgxPaginationModule,
     AuthModule.forRoot({
       domain: 'brant-ntt.us.auth0.com',
       clientId: 'JXjwW7JwWaf06xYEDqIgzN2GQL1mkfkm',

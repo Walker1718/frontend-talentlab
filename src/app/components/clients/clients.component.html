@@ -26,7 +26,7 @@
                 </tr>
             </thead>
             <tbody>
-                <tr *ngFor="let client of clients | orderList : optionSort.property : optionSort.order">
+                <tr *ngFor="let client of clients | orderList : optionSort.property : optionSort.order | paginate: { itemsPerPage: 3, currentPage: p }  ">
                     <td class="text-center">{{client.idUser}}</td>
                     <td class="text-end">{{client.rut}}</td>
                     <td>{{client.name}} {{client.lastName}}</td>
@@ -45,6 +45,9 @@
                 </tr>
             </tbody>
         </table>
+
+        <pagination-controls (pageChange)="p = $event"></pagination-controls>
+
     </div>
 </div>
 

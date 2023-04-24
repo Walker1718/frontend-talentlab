@@ -3,6 +3,7 @@ import { faTriangleExclamation, faPenSquare, faTrashCan, faRectangleAd} from '@f
 import { Products } from 'src/app/services/products';
 import { ProductsService } from 'src/app/services/products.service';
 import Swal from 'sweetalert2';
+import { NgxPaginationModule } from 'ngx-pagination';
 
 @Component({
   selector: 'app-products',
@@ -18,6 +19,8 @@ export class ProductsComponent implements OnInit{
   faEditProduct = faPenSquare;
   faDeleteProduct = faTrashCan;
   faAddProduct = faRectangleAd;
+
+  p: number = 1;
 
   optionSort: { property: string | null, order : string } = { property : null, order : 'asc' };
 
