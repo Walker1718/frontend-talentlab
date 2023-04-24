@@ -1,7 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { HomeComponent } from './components/home/home.component';
-import { StarwarsComponent } from './components/starwars/starwars.component';
 import { ClientsComponent } from './components/clients/clients.component';
 import { NosotrosComponent } from './components/nosotros/nosotros.component';
 import { Page404Component } from './components/page404/page404.component';
@@ -25,9 +24,6 @@ const routes: Routes = [
   },
   {
     path: 'index', redirectTo: '',
-  },
-  {
-    path: 'starwars', component: StarwarsComponent, canActivate: [AuthGuard]
   },
   {
     path: 'clients', component: ClientsComponent,
@@ -77,9 +73,6 @@ const routes: Routes = [
   {
     path: '**', redirectTo: '404',
   }
-
-
-
 ];
 
 @NgModule({
