@@ -79,10 +79,9 @@
           <h5 class="mb-0">Total: ${{ cart.total }}</h5> 
         </div>
         <div *ngIf="cart.total == 0" class="col-md-6 offset-lg-1">
-          <h5 class="mb-0">Tu carrito esta vacío, añade productos en la tienda!</h5> 
+          <h5 class="mb-0 ">Tu carrito esta vacío, añade productos en la tienda!</h5> 
         </div>
-        
-        <div class="col-md-6 offset-lg-1 d-flex justify-content-end">
+        <div class="col-md-4 offset-lg-1 d-flex justify-content-end">
           <button 
             [routerLink]="['/store']"
             type="submit"
