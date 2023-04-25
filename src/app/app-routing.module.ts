@@ -27,28 +27,25 @@ const routes: Routes = [
     path: 'index', redirectTo: '',
   },
   {
-    path: 'clients', component: ClientsComponent,
+    path: 'clients', component: ClientsComponent, canActivate: [AuthGuard]
   },
   {
-    path: 'clients/form-clients', component: FormClientsComponent,
+    path: 'clients/form-clients', component: FormClientsComponent, canActivate: [AuthGuard]
   },
   {
-    path: 'clients/form-clients/:id', component: FormClientsComponent,
+    path: 'clients/form-clients/:id', component: FormClientsComponent, canActivate: [AuthGuard]
   },
   {
-    path: 'products', component: ProductsComponent,
+    path: 'products', component: ProductsComponent, canActivate: [AuthGuard]
   },
   {
-    path: 'products/form-products', component: FormProductsComponent,
+    path: 'products/form-products', component: FormProductsComponent, canActivate: [AuthGuard]
   },
   {
-    path: 'products/form-products/:id', component: FormProductsComponent,
+    path: 'products/form-products/:id', component: FormProductsComponent, canActivate: [AuthGuard]
   },
   {
-    path: 'cart', component: CartComponent,
-  },
-  {
-    path: 'cartItems', component: CartItemsComponent,
+    path: 'cart', component: CartComponent, canActivate: [AuthGuard]
   },
   {
     path: 'nosotros', component: NosotrosComponent,
@@ -57,19 +54,16 @@ const routes: Routes = [
     path: 'store', component: StoreComponent, canActivate: [AuthGuard]
   },
   {
-    path: 'sale-orders/:id', component: SaleOrdersComponent,
+    path: 'sale-orders/:id', component: SaleOrdersComponent, canActivate: [AuthGuard]
   },
   {
-    path: 'store/add', component: StoreComponent,
+    path: 'sales', component: SalesComponent, canActivate: [AuthGuard]
   },
   {
-    path: 'sales', component: SalesComponent,
+    path: 'sales/:id', component: SaleComponent, canActivate: [AuthGuard]
   },
   {
-    path: 'sales/:id', component: SaleComponent,
-  },
-  {
-    path: 'profile', component: ProfileComponent,
+    path: 'profile', component: ProfileComponent, canActivate: [AuthGuard]
   },
   {
     path: '404', component: Page404Component,
