@@ -86,7 +86,6 @@ export class ProductsComponent implements OnInit{
       ) {
         swalWithBootstrapButtons.fire(
           'Acción cancelada',
-          'El cielo es de los arrepentidos',
           'error'
         )
       }

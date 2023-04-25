@@ -26,6 +26,7 @@ import { AuthModule } from '@auth0/auth0-angular';
 import { SaleOrdersComponent } from './components/saleorders/saleorders.component';
 import { SaleComponent } from './components/sales/sale/sale.component';
 import { NgxPaginationModule } from 'ngx-pagination';
+import { ProfileComponent } from './components/profile/profile.component';
 
 registerLocaleData(localeES,'es');
 
@@ -49,6 +50,7 @@ registerLocaleData(localeES,'es');
     StoreComponent,
     SaleOrdersComponent,
     SaleComponent,
+    ProfileComponent,
 
   ],
   imports: [
